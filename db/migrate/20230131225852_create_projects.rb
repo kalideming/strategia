@@ -5,6 +5,7 @@ class CreateProjects < ActiveRecord::Migration[7.0]
       t.string :description
       t.date :deadline
       t.string :photo
+      t.blob :documentation
 
       t.timestamps
     end
