@@ -4,7 +4,6 @@ class CreateEvents < ActiveRecord::Migration[7.0]
       t.belongs_to :schedule, null: false, foreign_key: true
       t.datetime :start
       t.datetime :end
-      t.integer :required_hours
       t.string :title
       t.string :description
       t.boolean :personal
