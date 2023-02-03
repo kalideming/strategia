@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :photo
       t.string :email
       t.string :username
-      t.string :password_digest
+      t.string :password_digest, null: false
       t.string :position
       t.string :company
       t.boolean :manager

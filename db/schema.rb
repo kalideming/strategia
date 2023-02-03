@@ -10,8 +10,82 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema[7.0].define(version: 2023_01_31_230950) do
+  create_table "events", force: :cascade do |t|
+    t.integer "schedule_id", null: false
+    t.time "start"
+    t.time "end"
+    t.integer "hours_taken"
+    t.string "title"
+    t.string "description"
+    t.boolean "personal"
+    t.boolean "work"
+    t.boolean "project"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_events_on_schedule_id"
+  end
 
+  create_table "project_roles", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "project_id", null: false
+    t.string "role_title"
+    t.boolean "project_head"
+    t.integer "required_hours"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_roles_on_project_id"
+    t.index ["user_id"], name: "index_project_roles_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.date "deadline"
+    t.string "photo"
+    t.binary "documentation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_schedules_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.string "title"
+    t.string "description"
+    t.boolean "completed"
+    t.date "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "photo"
+    t.string "email"
+    t.string "username"
+    t.string "password_digest", null: false
+    t.string "position"
+    t.string "company"
+    t.boolean "manager"
+    t.boolean "upper_management"
+    t.integer "available_hours"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "events", "schedules"
+  add_foreign_key "project_roles", "projects"
+  add_foreign_key "project_roles", "users"
+  add_foreign_key "schedules", "users"
+  add_foreign_key "tasks", "projects"
 end
