@@ -1,4 +1,4 @@
 class ScheduleSerializer < ActiveModel::Serializer
-  attributes :id
-  has_one :user
+  attributes :id, :user_id, :events
+  # has_one :user
 end

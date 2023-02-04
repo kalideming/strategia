@@ -1,3 +1,3 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :deadline
+  attributes :id, :title, :description, :deadline, :tasks, :project_roles
 end
