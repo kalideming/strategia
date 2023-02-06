@@ -1,29 +1,36 @@
 Rails.application.routes.draw do
   resources :events
-  resources :schedules, only: [:show]
-  resources :users
+  resources :schedule
+  resources :users, only: [:update, :destroy]
   resources :tasks
   resources :project_roles
   resources :projects
 
-  # get "/home" to: "users#schedule"
+  get "/myschedule", to: "schedules#userschedule"
   
   post "/signup", to: "users#create"
-  get "/myaccount", to: "users#show"
+  get "/home", to: "users#show"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  patch "/updateprofile", to: "users#update"
+  get "/myroles", to: "project_roles#user_roles"
+  post "/addrole", to: "project_roles#create"
 
-  need custome routes to:
-    - user home page display schedule and events and hours 
-    - project tasks to index them within the project page 
-    - project roles route to show users their index of project roles (project_role_id => current_user.project_role_id)
-    - route to show all project roles on a given project 
-    - route to show all projects for a given user (project.project_role_id => current_user.project_role_id)
-    - route to show all projects for managers and upper management of a specific company (project.company => current_user.company)
-      -uh oh might have to add company column to projects table 
+  post "/newproject", to: "projects#create"
+
+  # get "/", to: "project_roles"
+
+  # patch "/updateprofile", to: "users#update"
+
+  # need custome routes to:
+  #   - project tasks to index them within the project page 
+  #   - project roles route to show users their index of project roles (project_role_id => current_user.project_role_id)
+  #   - route to show all project roles on a given project 
+  #   - route to show all projects for a given user (project.project_role_id => current_user.project_role_id)
+  #   - route to show all projects for managers and upper management of a specific company (project.company => current_user.company)
+  #     -uh oh might have to add company column to projects table 
+            # -could circumvent this by doing some sort of function on the front to equate company name within users and project_roles 
     
 
 end
