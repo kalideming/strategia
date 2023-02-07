@@ -1,16 +1,28 @@
-import React from "react";
-import LogIn from "./LogIn";
+import React, { Route, Switch } from "react";
+import Main from "./Main";
+import SignIn from "./SignIn";
 import SignUp from "./SignUp";
-import Home from "./Home/Home";
-import MyProjects from "./MyProjects/MyProjects";
-import NavBar from "./NavBar";
-import ProjectPage from "./ProjectPage/ProjectPage";
+import { UserProvider } from "./Context/UserProvider";
+import { Switch } from "react-router-dom";
 
 
 function App() {
+  
   return(
-    <div>hi</div>
-  )
-}
+    <UserProvider>
+      <Switch>
+        <Route path="/login">
+          <SignIn/>
+        </Route>
+        <Route path="/signup">
+          <SignUp/>
+        </Route>
+        <Route path="/home">
+          <Main/>
+        </Route>
+      </Switch>
+    </UserProvider>
+  );
+};
 
 export default App;
