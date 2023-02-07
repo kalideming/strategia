@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :companies
   resources :events
   resources :schedule
   resources :users, only: [:update, :destroy]

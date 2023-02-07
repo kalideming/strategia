@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_31_230950) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_171557) do
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer "schedule_id", null: false
     t.time "start"
@@ -40,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_31_230950) do
   end
 
   create_table "projects", force: :cascade do |t|
+    t.integer "company_id"
     t.string "title"
     t.string "description"
     t.date "deadline"
@@ -47,6 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_31_230950) do
     t.binary "documentation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_projects_on_company_id"
   end
 
   create_table "schedules", force: :cascade do |t|
