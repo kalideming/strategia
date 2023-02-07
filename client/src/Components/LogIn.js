@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "./Context/UserProvider";
 import { useHistory } from "react-router-dom";
 
-function SignIn(){
+function LogIn(){
 
     const [errors, setErrors] = useState([]);
 
@@ -92,4 +92,4 @@ function SignIn(){
     );
 };
 
-export default SignIn;
+export default LogIn;

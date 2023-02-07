@@ -10,12 +10,13 @@ Rails.application.routes.draw do
   get "/myschedule", to: "schedules#userschedule"
   
   post "/signup", to: "users#create"
-  get "/home", to: "users#show"
+  get "/home", to: "users#home"
+  get "/myaccount", to: "users#show"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  get "/myroles", to: "project_roles#user_roles"
+  get "/myprojects", to: "project_roles#user_roles"
   post "/addrole", to: "project_roles#create"
 
   post "/newproject", to: "projects#create"
