@@ -26,6 +26,11 @@ class ProjectsController < ApplicationController
         project = Project.create!(project_params)
         render json: project, status: :created 
     end
+
+    def company_projects
+        projects = Project.all 
+        render json: projects, status: :ok 
+    end
  
     private
 

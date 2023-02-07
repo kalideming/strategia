@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   post "/signup", to: "users#create"
   get "/home", to: "users#home"
-  get "/myaccount", to: "users#show"
+  get "/me", to: "users#show"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post "/addrole", to: "project_roles#create"
 
   post "/newproject", to: "projects#create"
+  get "/companyprojects", to: "projects#company_projects"
 
   # get "/", to: "project_roles"
 
