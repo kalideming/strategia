@@ -7,7 +7,7 @@ function UserProvider({ children }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/me")
+    fetch("/home")
       .then((r) => r.json())
       .then((data) => console.log(data));
   }, []);

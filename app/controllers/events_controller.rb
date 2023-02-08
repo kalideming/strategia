@@ -4,6 +4,11 @@ class EventsController < ApplicationController
         render json: user_events, status: :ok 
     end
 
+    def myevents 
+        events = Event.where(:schedule_id => current_user.schedule.schedule_id)
+        render json: events, status: :ok 
+    end
+
     def show 
         event = user_events.find(params[:id])
         render json: event, status: :ok

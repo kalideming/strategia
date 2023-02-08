@@ -5,7 +5,7 @@ import { UserProvider } from "./Context/UserProvider";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import HomePage from "./Pages/HomePage";
-import Account from "./Pages/Account";
+import AccountPage from "./Pages/AccountPage";
 import MyProjects from "./Pages/MyProjects";
 import ProjectPage from "./Pages/ProjectPage";
 import CreateProject from "./Pages/CreateProject";
@@ -28,7 +28,7 @@ function App() {
           <HomePage/>
         </Route>
         <Route path="/myaccount">
-          <Account/>
+          <AccountPage/>
         </Route>
         <Route path="/myprojects">
           <MyProjects/>

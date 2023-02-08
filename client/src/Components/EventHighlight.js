@@ -1,13 +1,11 @@
 import React from "react";
-import UpdateEvent from "./UpdateEvent";
-import DeleteEvent from "./DeleteEvent";
+import UpdateEventForm from "./UpdateEventForm";
 
 function EventHighlight() {
 
     return(
         <div>
-            <UpdateEvent/>
-            <DeleteEvent/>
+            <UpdateEventForm/>
         </div>
     )
 };

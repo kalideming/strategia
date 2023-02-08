@@ -2,12 +2,14 @@ Rails.application.routes.draw do
   resources :companies
   resources :events
   resources :schedule
-  resources :users, only: [:update, :destroy]
+  resources :users, only: [:update, :destroy, :index]
   resources :tasks
   resources :project_roles
   resources :projects
 
   get "/myschedule", to: "schedules#userschedule"
+
+  get "/myevents" to: "events#myevents"
   
   post "/signup", to: "users#create"
   get "/home", to: "users#home"
