@@ -19,8 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_171557) do
 
   create_table "events", force: :cascade do |t|
     t.integer "schedule_id", null: false
-    t.time "start"
-    t.time "end"
+    t.datetime "start"
+    t.datetime "end"
     t.integer "hours_taken"
     t.string "title"
     t.string "description"

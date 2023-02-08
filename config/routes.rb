@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get "/myschedule", to: "schedules#userschedule"
 
-  get "/myevents" to: "events#myevents"
+  get "/myevents", to: "events#myevents"
   
   post "/signup", to: "users#create"
   get "/home", to: "users#home"

@@ -5,30 +5,38 @@ function HomeGreeting() {
 
     const { user } = useContext(UserContext);
     const [ userEvents, setUserEvents ] = useState([])
-
+    //console.log(user)
+    
     useEffect(() => {
         fetch("/myevents")
         .then((r) => r.json())
         .then((userEvents) => setUserEvents(userEvents));
     }, []);
 
+    if(!user || !userEvents){
+        return <div>Loading</div>
+    }
     const firstName = user.first_name
     const lastName = user.last_name
     const position = user.position 
     const company = user.company 
     const picture = user.image
-
-    const eventHoursArr = [] = userEvents.map((event) =>{
+    
+    const eventHoursArr = [] 
+    userEvents.map((event) =>{
         let eventHours = event.hours_taken
         eventHoursArr.push(eventHours)
     });
-
+    
     const availableHours = user.available_hours
     const totalEventHours = eventHoursArr.reduce((total, amount) => total + amount)
-
-    const remainingHours = (availableHours, totalEventHours) => {
-       return (availableHours - totalEventHours)
-    }
+    console.log(availableHours)
+    console.log(totalEventHours)
+    // const remainingHours = (availableHours, totalEventHours) => {
+    //    return (availableHours - totalEventHours)
+    // }
+    const remainingHours = availableHours - totalEventHours
+    console.log(remainingHours)
     
 
     // const renderRemainingHours = (user, eventHoursArr) => {

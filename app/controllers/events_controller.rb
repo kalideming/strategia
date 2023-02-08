@@ -5,7 +5,7 @@ class EventsController < ApplicationController
     end
 
     def myevents 
-        events = Event.where(:schedule_id => current_user.schedule.schedule_id)
+        events = Event.where(:schedule_id => current_user.schedule.id)
         render json: events, status: :ok 
     end
 
