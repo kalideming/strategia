@@ -30,13 +30,12 @@ function NavBar() {
             ) : (
                 <div>
                     <h1 onClick={home}>Strategia</h1>
-                    <br></br>
                     <nav>
                         <NavLink exact to="/home">Home</NavLink>
                         <NavLink exact to="/myaccount">My Account</NavLink>
                         <ProjsLink/>
                         <AddProjLink/>
-                        <NavLink exact to="/login" onCLick={onLogOut}>Log Out</NavLink>
+                        <NavLink exact to="/login" onClick={onLogOut}>Log Out</NavLink>
                     </nav>
                 </div>
             )}

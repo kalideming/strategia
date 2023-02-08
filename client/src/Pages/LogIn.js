@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserProvider";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 function LogIn(){
 
     const [errors, setErrors] = useState([]);
 
-    let { setUser } = useContext(UserContext);
-
+    let {setUser} = useContext(UserContext);
     let history = useHistory();
 
     const [credentials, setCredentials] = useState({
@@ -27,7 +26,7 @@ function LogIn(){
     function handleSubmit(e) {
         e.preventDefault();
 
-        fetch(`login`, {
+        fetch("/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -78,9 +77,7 @@ function LogIn(){
 
             <div>
             <label> New to Strategia?</label>
-            <button
-                onClick={handleToSignUpPage}
-            > Sign Up </button>
+            <Link onClick={handleToSignUpPage}>Sign Up</Link>
             </div>
   
             <div>

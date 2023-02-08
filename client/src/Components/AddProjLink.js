@@ -1,15 +1,11 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../context/UserProvider";
+import { UserContext } from "../Context/UserProvider";
 import { NavLink } from "react-router-dom";
 
 function AddProjLink() {
 
     let { user } = useContext(UserContext);
-    let [isManag, setIsManag] = useState(true)
-
-    if (user.manager !== true || user.upper_management !== true) {
-        setIsManag(false)
-    };
+    let [isManag, setIsManag] = useState(user.manager !== true || user.upper_management !== true ? false : true)
 
     return (
         <div>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { UserContext } from "../context/UserProvider";
+import { UserContext } from "../Context/UserProvider";
 import { NavLink } from "react-router-dom";
 
 function ProjsLink() {

@@ -1,9 +1,9 @@
-import React, { Route, Switch } from "react";
+import React from "react";
 import LogIn from "./Pages/LogIn";
 import SignUp from "./Pages/SignUp";
 import { UserProvider } from "./Context/UserProvider";
-import { Switch } from "react-router-dom";
-import NavBar from "./Components/NavBar/NavBar";
+import { Switch, Route } from "react-router-dom";
+import NavBar from "./Components/NavBar";
 import HomePage from "./Pages/HomePage";
 import Account from "./Pages/Account";
 import MyProjects from "./Pages/MyProjects";
@@ -13,7 +13,7 @@ import CompanyProjects from "./Pages/CompanyProjects";
 
 
 function App() {
-  
+
   return(
     <UserProvider>
       <NavBar/>
