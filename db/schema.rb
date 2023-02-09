@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_171557) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer "company_id", null: false
     t.string "first_name"
     t.string "last_name"
     t.string "photo"
@@ -89,6 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_171557) do
     t.integer "available_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
   end
 
   add_foreign_key "events", "schedules"
@@ -96,4 +98,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_171557) do
   add_foreign_key "project_roles", "users"
   add_foreign_key "schedules", "users"
   add_foreign_key "tasks", "projects"
+  add_foreign_key "users", "companies"
 end

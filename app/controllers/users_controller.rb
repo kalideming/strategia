@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
 
     def home 
-        render json: current_user, include: ['schedule', 'schedule.events'], status: :ok
+        render json: current_user, include: ['schedule', 'schedule.events', 'project_roles', 'project_roles.project', 'company'], status: :ok
     end
 
     def show 
