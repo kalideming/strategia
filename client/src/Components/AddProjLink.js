@@ -10,7 +10,7 @@ function AddProjLink() {
     return (
         <div>
         {!isManag ? (
-            <div></div>
+            (null)
         ) : (
             <NavLink exact to="/newproject">Create Project</NavLink>
         )}
