@@ -5,7 +5,6 @@ const UserContext = createContext();
 function UserProvider({ children }) {
 
   const [ user, setUser ] = useState(null);
-  console.log("in user provid")
   useEffect(() => {
     fetch("/home")
       .then((r) => r.json())
