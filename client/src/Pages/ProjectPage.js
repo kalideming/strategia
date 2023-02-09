@@ -10,8 +10,8 @@ function ProjectPage(){
     let { user } = useContext(UserContext);
     let history = useHistory();
     let [ project, setProject ] = useState([]);
-    let [ isManag, setIsManag ] = useState([]);
-    let [ isUpperManag, setIsUpperManag ] = useState([]);
+    let [ isProjHead, setIsProjHead ] = useState(true);
+    let [ isUpperManag, setIsUpperManag ] = useState(true);
     const {id} = useParams();
 
     useEffect(() => {
@@ -27,12 +27,12 @@ function ProjectPage(){
         history.push("/updateproject")
     };
 
-    // Figuring out how to conditionally render update button
-    // button should persist across all company projects for upper management 
-    // button should only render for managers on projects of which they are a member 
+    function handleToDelete() {
+        history.push("/deleteproject")
+    };
 
-    if (user.manager === false) {
-        setIsManag(false);
+    if (project.project_role.project_head !== user.project_role.project_head) {
+        setIsProjHead(false);
     };
 
     if (user.upper_management === false) {
@@ -44,11 +44,26 @@ function ProjectPage(){
             <ProjectInfo project={project}/>
             <MemberList members={members}/>
             <TaskList tasks={tasks}/>
-
-            <button onClick={handleToUpdate}></button>
+            <div>
+                { !isProjHead ? (
+                    (null)
+                ) : (
+                    <button onClick={handleToUpdate}>Update Project</button>
+                )}
+            </div>
+            <div>
+                { !isUpperManag ? (
+                    (null)
+                ) : (
+                    <div>
+                        <button onClick={handleToUpdate}>Update Project</button>
+                        <button onClick={handleToDelete}>Delete Project</button>
+                    </div>
+                )}
+            </div>
         </div>
     );
 
-}
+};
 
 export default ProjectPage;
