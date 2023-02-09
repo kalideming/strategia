@@ -6,7 +6,7 @@ function UserRoleCard({ roles }) {
     const history = useHistory();
 
     function handleToProjectPage() {
-        history.push(`/projectpage/${roles.project_id}`)
+        history.push(`/projects/${roles.project_id}`)
     };
 
     return (

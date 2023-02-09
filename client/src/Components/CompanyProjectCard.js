@@ -6,7 +6,7 @@ function CompanyProjectCard({ proj }) {
     const history = useHistory();
 
     function handleToProjectPage() {
-        history.push(`/projectpage/${proj.id}`)
+        history.push(`/projects/${proj.id}`)
     };
 
     return (
