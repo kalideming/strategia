@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
     # skip_before_action :authorize, only: :create
-
-    def index
-        users = User.all 
-        render json: users, include: ['schedule', 'schedule.events'], status: :ok 
-    end
     
     def create
       user = User.create!(user_params)
@@ -14,10 +9,6 @@ class UsersController < ApplicationController
 
     def home 
         render json: current_user, include: ['schedule', 'schedule.events', 'project_roles', 'project_roles.project', 'company'], status: :ok
-    end
-
-    def show 
-        render json: current_user
     end
 
     def update

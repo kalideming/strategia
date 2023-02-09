@@ -16,6 +16,11 @@ class TasksController < ApplicationController
         render json: task, status: :accepted
     end
 
+    def create 
+        task = Task.create!(task_params)
+        render json: task, status: :created 
+    end
+
     def destroy 
         task = task.find(params[:id])
         task.destroy 

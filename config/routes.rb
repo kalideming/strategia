@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :companies
+  resources :companies, only: [:show]
   resources :events
   resources :schedule
-  resources :users, only: [:update, :destroy, :index]
+  resources :users, only: [:create, :update, :destroy]
   resources :tasks
-  resources :project_roles
-  resources :projects
+  resources :project_roles, only: [:update, :destroy, :create]
+  resources :projects, only: [:show, :update, :destroy, :create]
 
   get "/myschedule", to: "schedules#userschedule"
 

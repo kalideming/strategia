@@ -1,13 +1,8 @@
 class ProjectsController < ApplicationController
-     # need custom routes for rendering of user vs manager vs upper management 
-    def index 
-        projects = Project.all 
-        render json: projects, status: :ok 
-    end
 
     def show 
         project = Project.find(params[:id])
-        render json: project, include: ['tasks', 'project_roles', 'company'], status: :ok
+        render json: project, include: ['tasks', 'project_roles'], status: :ok
     end
 
     def update 
@@ -28,13 +23,8 @@ class ProjectsController < ApplicationController
     end
 
     def company_projects
-        companyprojs = Project.joins(:company).where(companies: {name: => current_user.company})
-        render json: companyprojs, include: ['company'], status: :ok 
-    end
-
-    def project_page
-        project = Project.find(params[:id])
-        render json: project, include: ['tasks', 'project_roles', 'company'], status: :ok
+        companyprojs = Project.where(:company_id => current_user.company_id)
+        render json: companyprojs, status: :ok 
     end
  
     private
