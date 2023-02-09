@@ -28,8 +28,13 @@ class ProjectsController < ApplicationController
     end
 
     def company_projects
-        projects = Project.all 
-        render json: projects, status: :ok 
+        companyprojs = Project.joins(:company).where(companies: {name: => current_user.company})
+        render json: companyprojs, include: ['company'], status: :ok 
+    end
+
+    def project_page
+        project = Project.find(params[:id])
+        render json: project, include: ['tasks', 'project_roles', 'company'], status: :ok
     end
  
     private

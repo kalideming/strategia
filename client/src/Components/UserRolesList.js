@@ -7,7 +7,7 @@ function UserRolesList({ projectRoles, setProjectRoles }) {
         return <UserRoleCard key={oneRole.id} roles={oneRole}/>
     });
 
-    return(
+    return (
         <ul>
             {mappedRoles}
         </ul>

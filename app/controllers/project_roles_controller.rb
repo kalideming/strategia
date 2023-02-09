@@ -34,11 +34,11 @@ class ProjectRolesController < ApplicationController
         render json: project_role, status: :created 
     end
 
-    def project_page
-        user_project_roles = ProjectRole.where(:user_id => current_user.id)
-        user_project = user_project_roles.find(params[:id])
-        render json: user_project, include: ['project'], status: :ok
-    end
+    # def project_page
+    #     user_project_roles = ProjectRole.where(:user_id => current_user.id)
+    #     user_project = user_project_roles.find(params[:id])
+    #     render json: user_project, include: ['project', 'tasks'], status: :ok
+    # end
 
     private 
 

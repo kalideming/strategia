@@ -5,12 +5,12 @@ function UserRoleCard({ roles }) {
 
     const history = useHistory();
 
-    function handleOneRole() {
-        history.push(`/projectpage/${roles.id}`)
+    function handleToProjectPage() {
+        history.push(`/projectpage/${roles.project_id}`)
     };
 
     return (
-        <li onClick={handleOneRole}>
+        <li onClick={handleToProjectPage}>
             <h2>{roles.role_title}</h2>
             <h3>{roles.project.title}</h3>
             <h3>{roles.required_hours}</h3>

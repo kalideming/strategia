@@ -20,8 +20,9 @@ Rails.application.routes.draw do
 
   get "/myprojects", to: "project_roles#user_roles"
   post "/addrole", to: "project_roles#create"
-  get "/projectpage", to: "project_roles#project_page"
-
+  # get "/projectpage", to: "project_roles#project_page"
+  # get "/companyprojects", to: "project_roles#company_projects"
+  get "/projectpage", to: "projects#project_page"
   post "/newproject", to: "projects#create"
   get "/companyprojects", to: "projects#company_projects"
 
