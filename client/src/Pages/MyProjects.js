@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import NewProjectButton from "../Components/NewProjectButton";
 import UserRolesList from "../Components/UserRolesList";
-import CreateProjectButton from "../Components/CreateProjectButton";
+import { UserContext } from "../Context/UserProvider";
 
 function MyProjects(){
 
-    let [ projectRoles, setProjectRoles ] = useState([]);
+    const { user } = useContext(UserContext);
+    const [ projectRoles, setProjectRoles ] = useState([]);
 
     useEffect(() => {
-        fetch("/myprojects")
-        .then((r) => r.json())
-        .then((projectRoles) => setProjectRoles(projectRoles))
+        if (user) {
+            fetch(`/users/${user.id}/project_roles`)
+            .then((r) => r.json())
+            .then((projectRoles) => setProjectRoles(projectRoles))
+        } 
     }, []);
 
     return (
         <div>
             <UserRolesList projectRoles={projectRoles}/>
-            <CreateProjectButton/>
+            <NewProjectButton/>
         </div>
-    )
-
-}
+    );
+};
 
 export default MyProjects;

@@ -1,21 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CompanyProjectsList from "../Components/CompanyProjectsList";
-import CreateProjectButton from "../Components/CreateProjectButton";
+import NewProjectButton from "../Components/NewProjectButton";
+import { UpperManagContext } from "../Context/UpperManagProvider";
+import { ManagerContext } from "../Context/ManagerProvider";
 
 function CompanyProjects() {
 
-    let [companyProjs, setCompanyProjs] = useState([]);
+    const [ isManager ] = useContext(ManagerContext);
+    const [ isUpperManag ] = useContext(UpperManagContext);
+
+    let [companyProjects, setCompanyProjects] = useState([]);
 
     useEffect(() => {
-        fetch("/companyprojects")
-        .then((r) => r.json())
-        .then((companyProjs) => setCompanyProjs(companyProjs))
-    }, []);
+        if (user) {
+            fetch(`/companies/${user.company_id}/projects`)
+            .then((r) => r.json())
+            .then((companyProjects) => setCompanyProjects(companyProjects))
+        }
+    },[]);
 
     return (
         <div>
-            <CompanyProjectsList companyProjs={companyProjs}/>
-            <CreateProjectButton/>
+            {isManager || isUpperManag ? (
+                <div>
+                    <CompanyProjectsList companyProjects={companyProjects}/>
+                    <NewProjectButton/>
+                </div>
+            ) : (
+                (null)
+            )}
         </div>
     );
 };
