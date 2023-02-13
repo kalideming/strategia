@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
 
   private
 
-  # for authorization and authentication
+  for authorization and authentication
   def current_user
     user = User.find_by(id: session[:user_id])
   end

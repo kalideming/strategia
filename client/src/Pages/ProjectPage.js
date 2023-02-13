@@ -12,16 +12,20 @@ function ProjectPage(){
     let [ project, setProject ] = useState([]);
     let [ isProjHead, setIsProjHead ] = useState(true);
     let [ isUpperManag, setIsUpperManag ] = useState(true);
-    const {id} = useParams();
+    const { id } = useParams();
 
     useEffect(() => {
         fetch(`/projects/${id}`)
-        .then((r) => r.json())
+        .then((r) => r.json())    
         .then((project) => setProject(project))
     }, []);
 
-    let members = project.project_roles
-    let tasks = project.tasks 
+    if(!user || !project){
+        return <div>Loading</div>
+    };
+
+    let projectMembers = project.project_roles
+    let projectTasks = project.tasks 
 
     function handleToUpdate() {
         history.push("/updateproject")
@@ -42,8 +46,8 @@ function ProjectPage(){
     return (
         <div>
             <ProjectInfo project={project}/>
-            <MemberList members={members}/>
-            <TaskList tasks={tasks}/>
+            <MemberList members={projectMembers}/>
+            <TaskList tasks={projectTasks}/>
             <div>
                 { !isProjHead ? (
                     (null)

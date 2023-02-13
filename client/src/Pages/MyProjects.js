@@ -14,7 +14,7 @@ function MyProjects(){
 
     return (
         <div>
-            <UserRolesList projectRoles={projectRoles} setProjectRoles={setProjectRoles}/>
+            <UserRolesList projectRoles={projectRoles}/>
             <CreateProjectButton/>
         </div>
     )

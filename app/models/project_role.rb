@@ -2,6 +2,8 @@ class ProjectRole < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
-  validates_presence_of :role_title, :required_hours
-  # validation for boolean? 
+  # accepts_nested_attributes_for :user, :project 
+
+  validates_presence_of :role_title, :required_hours, :project_head
+
 end

@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
 
     def index 
-        tasks = Task.all 
-        render json: tasks, status: :ok 
+        tasks = Task.all
+        render json: tasks, include: ['project'], status: :ok
     end
     
     def show 
         task = Task.find(params[:id])
-        render json: task
+        render json: task, include: ['project'], status: :ok
     end
 
     def update 
@@ -30,7 +30,7 @@ class TasksController < ApplicationController
     private 
 
     def task_params
-        params.permit(:title, :description, :completed, :deadline)
+        params.permit(:title, :description, :completed, :deadline, :project)
     end
 
 end

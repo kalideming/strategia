@@ -4,11 +4,6 @@ class EventsController < ApplicationController
         render json: user_events, status: :ok 
     end
 
-    def myevents 
-        events = Event.where(:schedule_id => current_user.schedule.id)
-        render json: events, status: :ok 
-    end
-
     def show 
         event = user_events.find(params[:id])
         render json: event, status: :ok
@@ -36,6 +31,11 @@ class EventsController < ApplicationController
     end
 
     def event_params
-        params.permit(:schedule_id, :start, :end, :title, :description, :personal, :work, :project)
+        params.permit(:start, :end, :hours_taken :title, :description, :personal, :work, :project)
     end
 end
+
+    # def myevents 
+    #     events = Event.where(:schedule_id => current_user.schedule.id)
+    #     render json: events, status: :ok 
+    # end

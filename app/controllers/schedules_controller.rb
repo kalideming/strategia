@@ -1,18 +1,8 @@
 class SchedulesController < ApplicationController
 
-
-    def userschedule
+    def show
         user_schedule = Schedule.where(:user_id => current_user.id)
-        render json: user_schedule, status: :ok
+        render json: user_schedule, include: ['events'], status: :ok
     end
 
-    # private 
-
-    # def user_schedule
-    #     Schedule.where(:user_id => current_user.id)
-    # end
-
-    # def schedule_events
-    #     schedule_events 
-    # end
 end

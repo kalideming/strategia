@@ -5,6 +5,8 @@ class Project < ApplicationRecord
     has_many :tasks
     has_many :users, through: :project_roles
 
-    validates_presence_of :title
+    accepts_nested_attributes_for :project_roles
+
+    validates_presence_of :title, :deadline
     
 end

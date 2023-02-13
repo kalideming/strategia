@@ -7,6 +7,8 @@ class User < ApplicationRecord
     has_many :projects, through: :project_roles
     has_many :events, through: :schedule
 
+    accepts_nested_attributes_for :schedule, :project_roles
+
     validates_presence_of :first_name, :last_name, :email, :username, :password, :position, :company, :available_hours
     validates :manager, exclusion: [nil]
     validates :upper_management, exclusion: [nil]
