@@ -33,8 +33,6 @@ class ProjectRolesController < ApplicationController
         params.permit(:role_title, :project_head, :required_hours, :description, :user)
     end
 
-
-
 end
    
     # def user_roles

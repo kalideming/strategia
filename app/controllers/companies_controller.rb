@@ -20,4 +20,5 @@ class CompaniesController < ApplicationController
     def company_params
         params.permit(:name)
     end
+    
 end

@@ -7,7 +7,6 @@ class ApplicationController < ActionController::API
 
   private
 
-  for authorization and authentication
   def current_user
     user = User.find_by(id: session[:user_id])
   end
@@ -20,9 +19,8 @@ class ApplicationController < ActionController::API
     render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
   end
 
-#  for auth
- def authorize
-  return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
- end
+  def authorize
+    return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+  end
 
 end
