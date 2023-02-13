@@ -2,8 +2,8 @@ class User < ApplicationRecord
     has_secure_password
 
     belongs_to :company 
-    has_many :project_roles
-    has_one :schedule
+    has_many :project_roles, dependent: :destroy
+    has_one :schedule, dependent: :destroy 
     has_many :projects, through: :project_roles
     has_many :events, through: :schedule
 
