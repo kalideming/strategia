@@ -1,37 +1,43 @@
-import React, { useContext, useState } from "react";
-import { ProjectContext } from "../Context/ProjectProvider";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 
-function UpdateProjectForm({ onClose, project }) {
+function UpdateTaskForm({ task, onClose }) {
 
-    let { setProjects } = useContext(ProjectContext);
     const { id } = useParams();
+    const [ taskInfo, setTaskInfo ] = useState({
+        project_id: task.project_id,
+        title: task.title,
+        description: task.description,
+        completed: task.completed,
+        deadline: task.deadline
+    });
+    const [ tasks, setTasks ] = useState([])
 
-    const [ projectInfo, setProjectInfo ] = useState({
-        company_id: project.company_id,
-        title: project.title,
-        description: project.description,
-        deadline: project.deadline,
-        photo: project.photo
+    useEffect(() => {
+        if(user) {
+            fetch("/tasks")
+            .then((r) => r.json())
+            .then((tasks) => setTasks(tasks))
+        };
     });
 
-    function handleUpdateProject(e) {
+    function handleUpdateTask(e) {
         e.preventDefault();
 
-        fetch(`/projects/${id}`, {
+        fetch(`/tasks/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(projectInfo)
+            body: JSON.stringify(taskInfo)
         })
-        .then(() => {setProjects(projectInfo)});
+        .then(() => {setTasks(taskInfo)});
 
         onClose();
     };
 
     function handleChange(e) {
-        setProjectInfo((prev) =>{
+        setTaskInfo((prev) => {
             return {
                 ...prev,
                 [e.target.name]: e.target.value
@@ -41,14 +47,14 @@ function UpdateProjectForm({ onClose, project }) {
 
     return (
         <div>
-            <h1>Edit Project Information:</h1>
-            <form onSubmit={handleUpdateProject}>
+            <h1>Edit Task Information:</h1>
+            <form onSubmit={handleUpdateTask}>
                 <div>
                     <label>Title:</label>
                     <input
                         type="text"
                         name="title"
-                        value={projectInfo.title}
+                        value={taskInfo.title}
                         onChange={handleChange}
                     />
                 </div>
@@ -57,7 +63,7 @@ function UpdateProjectForm({ onClose, project }) {
                     <input
                         type="text"
                         name="deadling"
-                        value={projectInfo.deadline}
+                        value={taskInfo.deadline}
                         onChange={handleChange}
                     />
                 </div>
@@ -66,26 +72,17 @@ function UpdateProjectForm({ onClose, project }) {
                     <input
                         type="text"
                         name="description"
-                        value={projectInfo.description}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>Photo:</label>
-                    <input
-                        type="text"
-                        name="photo"
-                        value={projectInfo.photo}
+                        value={taskInfo.description}
                         onChange={handleChange}
                     />
                 </div>
                 <div>
                     <button onClick={onClose}>Cancel</button>
-                    <button type="submit">Save Project</button>
+                    <button type="submit">Save Task</button>
                 </div>
             </form>
         </div>
     );
 };
 
-export default UpdateProjectForm;
+export default UpdateTaskForm;
