@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { UserContext } from "../Context/UserProvider";
 import { NavLink, useHistory } from "react-router-dom";
-import AddProjLink from "./AddProjLink";
-import ProjsLink from "./ProjsLink";
+import CompanyProjsLink from "./CompanyProjsLink";
 
 function NavBar() {
 
@@ -23,6 +22,8 @@ function NavBar() {
         history.push("/home")
     };
 
+    let accountID = user.id;
+
     return (
         <div>
             {!user ? (
@@ -33,8 +34,7 @@ function NavBar() {
                     <nav>
                         <NavLink exact to="/home">Home</NavLink>
                         <NavLink exact to="/myaccount">My Account</NavLink>
-                        <ProjsLink/>
-                        <AddProjLink/>
+                        <CompanyProjsLink/>
                         <NavLink exact to="/login" onClick={onLogOut}>Log Out</NavLink>
                     </nav>
                 </div>

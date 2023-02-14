@@ -32,6 +32,10 @@ class UsersController < ApplicationController
         render json: current_user, include: ['schedule', 'schedule.events', 'project_roles', 'project_roles.project', 'company'], status: :ok
     end
 
+    def my_account
+        render json: current_user, status: :ok
+    end
+
     private 
 
     def user_params 

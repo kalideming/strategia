@@ -20,8 +20,11 @@ Rails.application.routes.draw do
   
   post "/signup", to: "users#create"
   get "/home", to: "users#home"
+  get "/myaccount", to: "users#my_account"
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+
+  get "/companyprojects", to: "comapnies#company_projects"
 
 end

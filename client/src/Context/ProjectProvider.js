@@ -18,7 +18,7 @@ function ProjectProvider({ children }) {
     }, []);
 
     return (
-        <ProjectContext.Provider value={[ projects, setProjects ]}>
+        <ProjectContext.Provider value={{ projects, setProjects }}>
             { children }
         </ProjectContext.Provider>
     );

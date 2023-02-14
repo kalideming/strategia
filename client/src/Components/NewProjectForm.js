@@ -1,15 +1,11 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserProvider";
-import { ManagerContext } from "../Context/ManagerProvider";
-import { UpperManagContext } from "../Context/UpperManagProvider";
 import { ProjectContext } from "../Context/ProjectProvider";
 
 function NewProjectForm({ onClose }) {
 
     const { user } = useContext(UserContext);
-    let [ isManag ] = useContext(ManagerContext)
-    let [ isUpperManag ] = useContext(UpperManagContext);
-    let [ projects, setProjects ] = useContext(ProjectContext);
+    let {setProjects} = useContext(ProjectContext);
 
     const [ projectTitle, setProjectTitle ] = useState("");
     const [ projectDescription, setProjectDescription ] = useState("");
@@ -29,7 +25,7 @@ function NewProjectForm({ onClose }) {
         };
 
         if (user) {
-            fetch(`projects`, {
+            fetch(`/projects`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -76,7 +72,17 @@ function NewProjectForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <label></label>
+                    <label>Project Photo:</label>
+                    <input
+                        type="text"
+                        name="photo"
+                        value={projectPhoto}
+                        onChange={(e) => setProjectPhoto(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <button onClick={onClose}>Cancel</button>
+                    <button>Create Project</button>
                 </div>
             </form>
         </div>

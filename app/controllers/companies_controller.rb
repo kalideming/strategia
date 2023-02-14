@@ -1,14 +1,16 @@
 class CompaniesController < ApplicationController
 
     def show 
-        company = user_company.find(params[:id])
-        render json: company, status: :ok 
+        render json: user_company, status: :ok 
     end
 
     def update
-        company = user_company.find(params[:id])
-        company.update!(company_params)
-        render json: company, status: :accepted 
+        user_company.update!(company_params)
+        render json: user_company, status: :accepted 
+    end
+
+    def company_projects
+        render json: user_company, include: ['projects'], status: :ok 
     end
 
     private 

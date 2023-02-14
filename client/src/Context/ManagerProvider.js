@@ -16,7 +16,7 @@ function ManagerProvider({ children }) {
     };
 
     return (
-        <ManagerContext.Provider value={[ isManager, setIsManager ]}>
+        <ManagerContext.Provider value={{ isManager, setIsManager }}>
             { children }
         </ManagerContext.Provider>
     );

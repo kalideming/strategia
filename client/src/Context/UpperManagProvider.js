@@ -16,7 +16,7 @@ function UpperManagProvider({ children }) {
     };
 
     return (
-        <UpperManagContext.Provider value={[ isUpperManag, setIsUpperManag ]}>
+        <UpperManagContext.Provider value={{ isUpperManag, setIsUpperManag }}>
             { children }
         </UpperManagContext.Provider>
     );
