@@ -7,7 +7,7 @@ function ProjectProvider({ children }) {
 
     const { user } = useContext(UserContext);
 
-    const [ projects, setProjects ] = useState(true);
+    const [ projects, setProjects ] = useState([]);
 
     useEffect(() => {
         if (user) {

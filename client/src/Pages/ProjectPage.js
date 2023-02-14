@@ -12,10 +12,7 @@ import UpdateProjectButton from "../Components/UpdateProjectButton";
 function ProjectPage(){
 
     let { user } = useContext(UserContext);
-    let { isUpperManag } = useContext(UpperManagContext);
-    let { isManager } = useContext(ManagerContext);
     let { project, setProject } = useState({});
-    let history = useHistory();
     const { id } = useParams();
 
     useEffect(() => {

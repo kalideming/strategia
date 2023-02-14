@@ -16,9 +16,9 @@ function ProjectHeadProvider({ children }) {
     };
 
     return (
-        <ManagerContext.Provider value={{ isProjectHead, setIsProjectHead }}>
+        <ProjectHeadContext.Provider value={{ isProjectHead, setIsProjectHead }}>
             { children }
-        </ManagerContext.Provider>
+        </ProjectHeadContext.Provider>
     );
 };
 

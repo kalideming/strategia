@@ -1,24 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from "react";
 
-function UpdateTaskForm({ task, onClose }) {
+function UpdateTaskForm({ task, setAllTasks, onClose }) {
 
-    const { id } = useParams();
+    const id = task.id
     const [ taskInfo, setTaskInfo ] = useState({
         project_id: task.project_id,
         title: task.title,
         description: task.description,
         completed: task.completed,
         deadline: task.deadline
-    });
-    const [ tasks, setTasks ] = useState([])
-
-    useEffect(() => {
-        if(user) {
-            fetch("/tasks")
-            .then((r) => r.json())
-            .then((tasks) => setTasks(tasks))
-        };
     });
 
     function handleUpdateTask(e) {
@@ -31,7 +21,7 @@ function UpdateTaskForm({ task, onClose }) {
             },
             body: JSON.stringify(taskInfo)
         })
-        .then(() => {setTasks(taskInfo)});
+        .then(() => {setAllTasks(taskInfo)});
 
         onClose();
     };

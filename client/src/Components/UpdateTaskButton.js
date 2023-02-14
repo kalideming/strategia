@@ -4,7 +4,7 @@ import { ManagerContext } from "../Context/ManagerProvider";
 import { UpperManagContext } from "../Context/UpperManagProvider";
 import { ProjectHeadContext } from "../Context/ProjectHeadProvider";
 
-function UpdateTaskButton({ task }) {
+function UpdateTaskButton({ task, setAllTasks }) {
 
     const { isManager } = useContext(ManagerContext);
     const { isUpperManag } = useContext(UpperManagContext);
@@ -24,7 +24,7 @@ function UpdateTaskButton({ task }) {
                         Update Task 
                     </button>
                     { isPopUpOpen ? (
-                        <UpdateTaskForm onClose={() => setIsPopUpOpen(false)} task={task}/>
+                        <UpdateTaskForm onClose={() => setIsPopUpOpen(false)} task={task} setAllTasks={setAllTasks}/>
                     ) : (
                         (null)
                     )}
