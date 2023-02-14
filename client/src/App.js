@@ -8,7 +8,6 @@ import HomePage from "./Pages/HomePage";
 import AccountPage from "./Pages/AccountPage";
 import MyProjects from "./Pages/MyProjects";
 import ProjectPage from "./Pages/ProjectPage";
-import CreateProject from "./Pages/CreateProject";
 import CompanyProjects from "./Pages/CompanyProjects";
 import { ManagerProvider } from "./Context/ManagerProvider";
 import { UpperManagProvider } from "./Context/UpperManagProvider";

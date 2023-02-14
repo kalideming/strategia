@@ -26,6 +26,10 @@ class ProjectsController < ApplicationController
         project = Project.create!(project_params)
         render json: project, status: :created 
     end
+
+    def company_projects 
+        projects = Project.where(:company_id => current_user.company_id)
+    end
  
     private
 

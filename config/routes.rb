@@ -25,9 +25,10 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  get "/companyprojects", to: "comapnies#company_projects"
-
+  get "/companyprojects", to: "projects#company_projects"
   post "/newproject", to: "projects#create"
+  patch "/updateproject", to: "projects#update"
+  delete "/deleteproject", to: "projects#destroy"
 
   get "/myprojects", to: "project_roles#my_projects"
 

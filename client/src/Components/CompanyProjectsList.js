@@ -1,15 +1,15 @@
 import React from "react";
 import CompanyProjectCard from "./CompanyProjectCard";
 
-function CompanyProjectsList({ companyProjs }) {
+function CompanyProjectsList({ companyProjects }) {
 
-    const mappedProjs = companyProjs.map(oneProj => {
+    const mappedProjects = companyProjects.map(oneProj => {
         return <CompanyProjectCard key={oneProj.id} proj={oneProj}/>
     });
 
     return (
         <ul>
-            {mappedProjs}
+            {mappedProjects}
         </ul>
     );
 };

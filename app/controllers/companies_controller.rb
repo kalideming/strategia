@@ -9,10 +9,6 @@ class CompaniesController < ApplicationController
         render json: user_company, status: :accepted 
     end
 
-    def company_projects
-        render json: user_company, include: ['projects'], status: :ok 
-    end
-
     private 
 
     def user_company

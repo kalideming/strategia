@@ -9,11 +9,11 @@ function CompanyProjects() {
     const [ isManager ] = useContext(ManagerContext);
     const [ isUpperManag ] = useContext(UpperManagContext);
 
-    let [companyProjects, setCompanyProjects] = useState([]);
+    let [ companyProjects, setCompanyProjects ] = useState({});
 
     useEffect(() => {
         if (user) {
-            fetch(`/companies/${user.company_id}/projects`)
+            fetch("/companyprojects")
             .then((r) => r.json())
             .then((companyProjects) => setCompanyProjects(companyProjects))
         }
