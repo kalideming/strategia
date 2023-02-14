@@ -5,14 +5,14 @@ import NewProjectForm from './NewProjectForm';
 
 function NewProjectButton() {
 
-    const [ isManag ] = useContext(ManagerContext);
-    const [ isUpperManag ] = useContext(UpperManagContext);
+    const { isManager } = useContext(ManagerContext);
+    const { isUpperManag } = useContext(UpperManagContext);
     const [ isPopUpOpen, setIsPopUpOpen ] = useState(false);
     const [ canCreate, setCanCreate ] = useState(false)
 
-    if (isManag || isUpperManag) {
+    if (isManager || isUpperManag) {
         setCanCreate(true)
-    }
+    };
 
     return (
         <div>
@@ -31,7 +31,7 @@ function NewProjectButton() {
                 (null)
             )}
         </div>
-    )
+    );
 };
 
 export default NewProjectButton;
