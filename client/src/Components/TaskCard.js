@@ -48,7 +48,14 @@ function TaskCard({ task }) {
             <h1>{task.title}</h1>
             <h3>{task.deadline}</h3>
             <UpdateTaskButton task={task} setAllTasks={setAllTasks}/>
-            <button onClick={() => {handleDelete(task.id)}}>Delete Task</button>
+            <div>
+                {canDelete ? (
+                    <button onClick={() => {handleDelete(task.id)}}>Delete Task</button>
+                ) : (
+                    (null)
+                )}
+            </div>
+            
         </li>
     );
 };

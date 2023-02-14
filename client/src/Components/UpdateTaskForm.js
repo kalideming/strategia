@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState } from "react";
 
 function UpdateTaskForm({ task, setAllTasks, onClose }) {
 
@@ -52,7 +52,7 @@ function UpdateTaskForm({ task, setAllTasks, onClose }) {
                     <label>Deadline:</label>
                     <input
                         type="text"
-                        name="deadling"
+                        name="deadline"
                         value={taskInfo.deadline}
                         onChange={handleChange}
                     />
