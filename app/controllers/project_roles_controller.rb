@@ -27,6 +27,11 @@ class ProjectRolesController < ApplicationController
         render json: project_role, include: ['user'], status: :created 
     end
 
+    def my_projects
+        project_roles = ProjectRole.where(:user_id => current_user.id)
+        render json: project_roles, include: ['project'], status: :ok 
+    end
+
     private 
 
     def project_role_params 

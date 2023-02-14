@@ -27,4 +27,8 @@ Rails.application.routes.draw do
 
   get "/companyprojects", to: "comapnies#company_projects"
 
+  post "/newproject", to: "projects#create"
+
+  get "/myprojects", to: "project_roles#my_projects"
+
 end

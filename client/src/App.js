@@ -47,9 +47,6 @@ function App() {
                 <Route path="/projects/:id">
                   <ProjectPage/>
                 </Route>
-                <Route path="/newproject">
-                  <CreateProject/>
-                </Route>
               </Switch>
             </ProjectProvider>
           </ProjectHeadProvider>

@@ -6,12 +6,9 @@ import { UserContext } from "../Context/UserProvider";
 
 function CompanyProjsLink() {
 
-    const { user } = useContext(UserContext);
     const { isUpperManag } = useContext(UpperManagContext);
     const { isManager } = useContext(ManagerContext);
     const [ canSeeAllProjs, setCanSeeAllProjs ] = useState(false);
-
-    let companyID = user.company_id
 
 
     if (isUpperManag || isManager) {
@@ -21,7 +18,7 @@ function CompanyProjsLink() {
     return (
         <div>
         {canSeeAllProjs ? (
-            <NavLink to={'/companies/'+companyID+'/projects'}>Company Projects</NavLink>
+            <NavLink exact to="/companyprojects">Company Projects</NavLink>
         ) : (
             (null)
         )}
