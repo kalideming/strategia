@@ -7,10 +7,12 @@ function UserProvider({ children }) {
   const [ user, setUser ] = useState(null);
 
   useEffect(() => {
-    fetch(`/home`)
-    .then((r) => r.json())
-    .then((user) => setUser(user));
-}, [])
+    fetch(`/home`).then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      };
+    });
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

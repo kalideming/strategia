@@ -19,10 +19,10 @@ function App() {
 
   return(
     <UserProvider>
-      <ManagerProvider>
+      {/* <ManagerProvider>
         <UpperManagProvider>
-          <ProjectHeadProvider>
-            <ProjectProvider>
+          <ProjectHeadProvider> */}
+            {/* <ProjectProvider> */}
               <NavBar/>
               <Switch>
                 <Route exact path="/">
@@ -47,10 +47,10 @@ function App() {
                   <ProjectPage/>
                 </Route>
               </Switch>
-            </ProjectProvider>
+            {/* </ProjectProvider>
           </ProjectHeadProvider>
         </UpperManagProvider>
-      </ManagerProvider>
+      </ManagerProvider> */}
     </UserProvider>
   );
 };

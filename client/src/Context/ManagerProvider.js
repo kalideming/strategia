@@ -1,18 +1,12 @@
-import React, { createContext, useState, useEffect } from 'react';
-// import { UserContext } from './UserProvider';
+import React, { createContext, useContext, useState } from 'react';
+import { UserContext } from './UserProvider';
 
 const ManagerContext = createContext();
 
 function ManagerProvider({ children }) {
 
-    const [ user, setUser ] = useState([]);
-    const [ isManager, setIsManager ] = useState(true);
-
-    useEffect(() => {
-        fetch("/home")
-          .then((r) => r.json())
-          .then((user) => setUser(user));
-      }, []);
+    const { user } = useContext(UserContext);
+    const [ isManager, setIsManager ] = useState(false);
 
     if (user.manager === true) {
         setIsManager(true)

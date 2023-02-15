@@ -25,7 +25,7 @@ function LogInPage(){
     function handleSubmit(e) {
         e.preventDefault();
 
-        fetch("/", {
+        fetch(`/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
