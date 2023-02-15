@@ -12,7 +12,6 @@ function UserProvider({ children }) {
     .then((user) => setUser(user));
 }, [])
 
-
   return (
     <UserContext.Provider value={{ user, setUser }}>
       { children }

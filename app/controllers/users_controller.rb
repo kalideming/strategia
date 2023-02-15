@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
-    before_action :authorize, only: [:update, :destroy]
+    # skip_before_action :authorize, only: :create 
 
     def index
-        users = User.where(:company_id => logged_on_user.company_id)
+        users = User.all
+        # users = User.where(:company_id => logged_on_user.company_id)
         render json: users, status: :ok 
     end
     
     def show
-        render json: @current_user
+        user = User.find(params[:id])
+        render json: user, status: :ok 
     end
     
     def create
