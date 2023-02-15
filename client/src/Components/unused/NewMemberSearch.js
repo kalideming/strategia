@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { UserContext } from "../Context/UserProvider";
+import { UserContext } from "../../Context/UserProvider";
 import { useHistory } from "react-router-dom";
 
 function NewMemberSearch({ project }) {

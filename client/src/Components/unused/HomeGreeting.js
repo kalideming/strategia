@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../Context/UserProvider";
+import { UserContext } from "../../Context/UserProvider";
 
 function HomeGreeting() {
 

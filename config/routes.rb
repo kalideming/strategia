@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "/home", to: "users#home"
   get "/myaccount", to: "users#my_account"
 
-  post "/login", to: "sessions#create"
+  post "/", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
   get "/companyprojects", to: "projects#company_projects"

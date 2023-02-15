@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserProvider";
 import { ProjectContext } from "../Context/ProjectProvider";
+import { useHistory } from "react-router-dom";
 
-function NewProjectForm({ onClose }) {
+function NewProjectPage() {
 
     const { user } = useContext(UserContext);
     let {setProjects} = useContext(ProjectContext);
+    let history = useHistory();
 
     const [ projectTitle, setProjectTitle ] = useState("");
     const [ projectDescription, setProjectDescription ] = useState("");
@@ -40,6 +42,10 @@ function NewProjectForm({ onClose }) {
         };
     };
 
+    function handleToHome() {
+        history.push("/home")
+    };
+    
     return (
         <div>
             <h1>New Project</h1>
@@ -81,12 +87,12 @@ function NewProjectForm({ onClose }) {
                     />
                 </div>
                 <div>
-                    <button onClick={onClose}>Cancel</button>
-                    <button>Create Project</button>
+                    <button onClick={handleToHome}>Cancel</button>
+                    <button type="submit">Create Project</button>
                 </div>
             </form>
         </div>
     );
 };
 
-export default NewProjectForm;
+export default NewProjectPage;

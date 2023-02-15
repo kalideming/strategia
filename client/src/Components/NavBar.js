@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../Context/UserProvider";
 import { NavLink, useHistory } from "react-router-dom";
 import CompanyProjsLink from "./CompanyProjsLink";
+import NewProjectLink from "./NewProjectLink";
 
 function NavBar() {
 
@@ -34,7 +35,8 @@ function NavBar() {
                         <NavLink exact to="/myaccount">My Account</NavLink>
                         <NavLink exact to="/myprojects">My Projects</NavLink>
                         <CompanyProjsLink/>
-                        <NavLink exact to="/login" onClick={onLogOut}>Log Out</NavLink>
+                        <NewProjectLink/>
+                        <NavLink exact to="/" onClick={onLogOut}>Log Out</NavLink>
                     </nav>
                 </div>
             )}

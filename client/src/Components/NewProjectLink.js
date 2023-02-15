@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { ManagerContext } from '../Context/ManagerProvider';
 import { UpperManagContext } from '../Context/UpperManagProvider';
-import NewProjectForm from './NewProjectForm';
 
-function NewProjectButton() {
+function NewProjectLink() {
 
     const { isManager } = useContext(ManagerContext);
     const { isUpperManag } = useContext(UpperManagContext);
-    const [ isPopUpOpen, setIsPopUpOpen ] = useState(false);
     const [ canCreate, setCanCreate ] = useState(false)
 
     if (isManager || isUpperManag) {
@@ -17,16 +16,7 @@ function NewProjectButton() {
     return (
         <div>
             {canCreate ? (
-                <div>
-                <button onClick={() => setIsPopUpOpen(true)}>
-                    Create A Project 
-                </button>
-                { isPopUpOpen ? (
-                    <NewProjectForm onClose={() => setIsPopUpOpen(false)}/>
-                ) : (
-                    (null)
-                )}
-                </div>
+                <NavLink exact to="/newproject">Create A Project</NavLink>
             ) : (
                 (null)
             )}
@@ -34,4 +24,4 @@ function NewProjectButton() {
     );
 };
 
-export default NewProjectButton;
+export default NewProjectLink;

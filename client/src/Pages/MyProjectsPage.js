@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import NewProjectButton from "../Components/NewProjectButton";
 import UserRolesList from "../Components/UserRolesList";
 import { UserContext } from "../Context/UserProvider";
 
-function MyProjects(){
+function MyProjectsPage(){
 
     const { user } = useContext(UserContext);
     const [ projectRoles, setProjectRoles ] = useState([]);
@@ -19,9 +18,8 @@ function MyProjects(){
     return (
         <div>
             <UserRolesList projectRoles={projectRoles}/>
-            <NewProjectButton/>
         </div>
     );
 };
 
-export default MyProjects;
+export default MyProjectsPage;

@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import CompanyProjectsList from "../Components/CompanyProjectsList";
-import NewProjectButton from "../Components/NewProjectButton";
 import { UpperManagContext } from "../Context/UpperManagProvider";
 import { ManagerContext } from "../Context/ManagerProvider";
 
-function CompanyProjects() {
+function CompanyProjectsPage() {
 
     const [ isManager ] = useContext(ManagerContext);
     const [ isUpperManag ] = useContext(UpperManagContext);
@@ -24,7 +23,6 @@ function CompanyProjects() {
             {isManager || isUpperManag ? (
                 <div>
                     <CompanyProjectsList companyProjects={companyProjects}/>
-                    <NewProjectButton/>
                 </div>
             ) : (
                 (null)
@@ -33,4 +31,4 @@ function CompanyProjects() {
     );
 };
 
-export default CompanyProjects;
+export default CompanyProjectsPage;

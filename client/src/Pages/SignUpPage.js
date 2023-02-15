@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import { UserContext } from "../Context/UserProvider";
 import { useHistory } from 'react-router-dom';
 
-function SignUp() {
+function SignUpPage() {
 
     const [errors, setErrors] = useState([]);
 
@@ -50,7 +50,7 @@ function SignUp() {
         }, []);
     };
 
-    function handleToSignInPage() {
+    function handleToLogInPage() {
         history.push("/")
     };
 
@@ -153,7 +153,7 @@ function SignUp() {
                 <br></br>
 
             <label> Already Using Strategia? </label>
-            <button onClick={handleToSignInPage}>Login</button>
+            <button onClick={handleToLogInPage}>Login</button>
         </form>
 
             <div>
@@ -165,4 +165,4 @@ function SignUp() {
     );
 }
 
-export default SignUp;
+export default SignUpPage;

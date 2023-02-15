@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserProvider";
 import { useHistory, Link } from "react-router-dom";
 
-function LogIn(){
+function LogInPage(){
 
     const [errors, setErrors] = useState([]);
 
@@ -26,7 +26,7 @@ function LogIn(){
     function handleSubmit(e) {
         e.preventDefault();
 
-        fetch("/login", {
+        fetch("/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -89,4 +89,4 @@ function LogIn(){
     );
 };
 
-export default LogIn;
+export default LogInPage;

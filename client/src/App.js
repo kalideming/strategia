@@ -1,14 +1,14 @@
 import React from "react";
-import LogIn from "./Pages/LogIn";
-import SignUp from "./Pages/SignUp";
+import LogInPage from "./Pages/LogInPage";
+import SignUpPage from "./Pages/SignUpPage";
 import { UserProvider } from "./Context/UserProvider";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import HomePage from "./Pages/HomePage";
 import AccountPage from "./Pages/AccountPage";
-import MyProjects from "./Pages/MyProjects";
+import MyProjectsPage from "./Pages/MyProjectsPage";
 import ProjectPage from "./Pages/ProjectPage";
-import CompanyProjects from "./Pages/CompanyProjects";
+import CompanyProjectsPage from "./Pages/CompanyProjectsPage";
 import { ManagerProvider } from "./Context/ManagerProvider";
 import { UpperManagProvider } from "./Context/UpperManagProvider";
 import { ProjectHeadProvider } from "./Context/ProjectHeadProvider";
@@ -25,11 +25,11 @@ function App() {
             <ProjectProvider>
               <NavBar/>
               <Switch>
-                <Route path="/login">
-                  <LogIn/>
+                <Route path="/">
+                  <LogInPage/>
                 </Route>
                 <Route path="/signup">
-                  <SignUp/>
+                  <SignUpPage/>
                 </Route>
                 <Route path="/home">
                   <HomePage/>
@@ -38,10 +38,10 @@ function App() {
                   <AccountPage/>
                 </Route>
                 <Route path="/myprojects">
-                  <MyProjects/>
+                  <MyProjectsPage/>
                 </Route>
                 <Route path="/companyprojects">
-                  <CompanyProjects/>
+                  <CompanyProjectsPage/>
                 </Route>
                 <Route path="/projects/:id">
                   <ProjectPage/>
