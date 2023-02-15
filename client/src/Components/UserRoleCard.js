@@ -4,9 +4,10 @@ import { useHistory } from "react-router-dom";
 function UserRoleCard({ roles }) {
 
     const history = useHistory();
+    const id = roles.project_id
 
     function handleToProjectPage() {
-        history.push(`/projects/${roles.project_id}`)
+        history.push(`/projects/${id}`)
     };
 
     return (

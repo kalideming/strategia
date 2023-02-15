@@ -1,21 +1,22 @@
-import React, { useContext, createContext, useState } from 'react';
+import React, { createContext, useState, useEffect, useContext } from 'react';
 import { UserContext } from './UserProvider';
 
 const ProjectContext = createContext();
 
 function ProjectProvider({ children }) {
 
+    const [ projects, setProjects ] = useState([]);
     const { user } = useContext(UserContext);
 
-    const [ projects, setProjects ] = useState([]);
-
     useEffect(() => {
-        if (user) {
-            fetch("/projects")
-            .then((r) => r.json())
-            .then((projects) => setProjects(projects))
-        }
+        fetch("/projects")
+        .then((r) => r.json())
+        .then((projects) => setProjects(projects))
     }, []);
+
+    if(!user || !projects){
+        return <div>Loading</div>
+    };
 
     return (
         <ProjectContext.Provider value={{ projects, setProjects }}>

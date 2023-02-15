@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
-    
+    before_action :authorize, only: [:update, :destroy]
+
     def index
-        users = User.where(:company_id => current_user.company_id)
+        users = User.where(:company_id => logged_on_user.company_id)
         render json: users, status: :ok 
     end
     
     def show
-        user = User.find(params[:id])
-        render json: user, status: :ok 
+        render json: @current_user
     end
     
     def create
@@ -29,11 +29,12 @@ class UsersController < ApplicationController
     end
 
     def home 
-        render json: current_user, include: ['schedule', 'schedule.events', 'project_roles', 'project_roles.project', 'company'], status: :ok
+        render json: current_user, status: :ok
     end
 
     def my_account
-        render json: current_user, status: :ok
+        user = logged_on_user
+        render json: user, status: :ok
     end
 
     private 

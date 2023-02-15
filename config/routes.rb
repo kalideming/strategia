@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :update]
   end
 
-  resources :users, except: [:index, :create] do 
+  resources :users do 
     resources :project_roles
   end
 
@@ -19,10 +19,10 @@ Rails.application.routes.draw do
   end
   
   post "/signup", to: "users#create"
-  get "/home", to: "users#home"
+  get "/home", to: "users#show"
   get "/myaccount", to: "users#my_account"
 
-  post "/", to: "sessions#create"
+  post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
   get "/companyprojects", to: "projects#company_projects"
@@ -31,5 +31,7 @@ Rails.application.routes.draw do
   delete "/deleteproject", to: "projects#destroy"
 
   get "/myprojects", to: "project_roles#my_projects"
+
+  # get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end

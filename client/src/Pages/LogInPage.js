@@ -5,8 +5,7 @@ import { useHistory, Link } from "react-router-dom";
 function LogInPage(){
 
     const [errors, setErrors] = useState([]);
-
-    let {setUser} = useContext(UserContext);
+    let { user, setUser } = useContext(UserContext);
     let history = useHistory();
 
     const [credentials, setCredentials] = useState({
@@ -26,7 +25,7 @@ function LogInPage(){
     function handleSubmit(e) {
         e.preventDefault();
 
-        fetch("/", {
+        fetch(`/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

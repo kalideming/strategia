@@ -24,7 +24,7 @@ function AccountPage() {
     return (
         <div>
             <div>
-                <img src={user.photo}/>
+                <img src={user.photo} alt=""/>
                 <h1>{user.first_name} {user.last_name}</h1>
                 <h2>{user.position}</h2>
                 <h3>{user.company.name}</h3>

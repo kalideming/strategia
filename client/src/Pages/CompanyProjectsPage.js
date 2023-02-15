@@ -11,11 +11,9 @@ function CompanyProjectsPage() {
     let [ companyProjects, setCompanyProjects ] = useState({});
 
     useEffect(() => {
-        if (user) {
-            fetch("/companyprojects")
-            .then((r) => r.json())
-            .then((companyProjects) => setCompanyProjects(companyProjects))
-        }
+        fetch("/companyprojects")
+        .then((r) => r.json())
+        .then((companyProjects) => setCompanyProjects(companyProjects))
     },[]);
 
     return (

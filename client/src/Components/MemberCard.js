@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import { ManagerContext } from "../Context/ManagerProvider";
 import { UpperManagContext } from "../Context/UpperManagProvider";
 import { ProjectHeadContext } from "../Context/ProjectHeadProvider";
-import { UserContext } from "../Context/UserProvider";
 import MemberUpdateButton from "./MemberUpdateButton";
 
 function MemberCard({ member, project }) {
@@ -11,16 +10,13 @@ function MemberCard({ member, project }) {
     const { isUpperManag } = useContext(UpperManagContext);
     const { isProjectHead } = useContext(ProjectHeadContext);
     const [ roles, setRoles ] = useState([]);
-    const { user } = useContext(UserContext);
     const [ canDelete, setCanDelete ] = useState(false);
-    const id = project.id
 
-    useEffect(() => {
-        if(user) {
-            fetch(`/projects/${id}/project_roles`)
-            .then((r) => r.json())
-            .then((roles) => setRoles(roles))
-        };
+    useEffect((project) => {
+        const id = project.id
+        fetch(`/projects/${id}/project_roles`)
+        .then((r) => r.json())
+        .then((roles) => setRoles(roles))
     }, []);
 
     function handleDelete(e) {
@@ -43,7 +39,7 @@ function MemberCard({ member, project }) {
 
     return (
         <li>
-            <img src={member.user.photo}/>
+            <img src={member.user.photo} alt=""/>
             <h2>{member.user.first_name} {member.user.last_name}</h2>
             <h1>{member.role_title}</h1>
             <p>{member.description}</p>

@@ -7,13 +7,15 @@ function MyProjectsPage(){
     const { user } = useContext(UserContext);
     const [ projectRoles, setProjectRoles ] = useState([]);
 
-    useEffect(() => {
-        if (user) {
-            fetch(`/users/${user.id}/project_roles`)
-            .then((r) => r.json())
-            .then((projectRoles) => setProjectRoles(projectRoles))
-        } 
+    useEffect((user) => {
+        fetch(`/users/${user.id}/project_roles`)
+        .then((r) => r.json())
+        .then((projectRoles) => setProjectRoles(projectRoles))
     }, []);
+
+    if(!user || !projectRoles){
+        return <div>Loading</div>
+    };
 
     return (
         <div>

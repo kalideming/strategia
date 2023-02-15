@@ -6,7 +6,7 @@ function HomePage(){
     const { user } = useContext(UserContext);
     const [ userRoles, setUserRoles ] = useState([]);
 
-    useEffect(() => {
+    useEffect((user) => {
         fetch(`/users/${user.id}/project_roles`)
         .then((r) => r.json())
         .then((userRoles) => setUserRoles(userRoles));
@@ -27,6 +27,7 @@ function HomePage(){
     userRoles.map((role) => {
         let projectHours = role.required_hours
         roleHours.push(projectHours);
+        return roleHours;
     });
 
     const totalProjectHours = roleHours.reduce((total, amount) => total + amount);
@@ -35,7 +36,7 @@ function HomePage(){
 
     return (
         <div>
-            <img src={picture}/>
+            <img src={picture} alt=""/>
             <h1>Hi, {firstName} {lastName}</h1>
             <h3>{position}</h3>
             <h3>{company}</h3>

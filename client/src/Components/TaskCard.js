@@ -3,7 +3,6 @@ import UpdateTaskButton from "./UpdateTaskButton";
 import { ManagerContext } from "../Context/ManagerProvider";
 import { UpperManagContext } from "../Context/UpperManagProvider";
 import { ProjectHeadContext } from "../Context/ProjectHeadProvider";
-import { UserContext } from "../Context/UserProvider";
 import TaskCompleteButton from "./TaskCompleteButton";
 
 function TaskCard({ task }) {
@@ -12,15 +11,12 @@ function TaskCard({ task }) {
     const { isUpperManag } = useContext(UpperManagContext);
     const { isProjectHead } = useContext(ProjectHeadContext);
     const [ allTasks, setAllTasks ] = useState([]);
-    const { user } = useContext(UserContext);
     const [ canDelete, setCanDelete ] = useState(false);
 
     useEffect(() => {
-        if(user) {
-            fetch("/tasks")
-            .then((r) => r.json())
-            .then((allTasks) => setAllTasks(allTasks))
-        };
+        fetch("/tasks")
+        .then((r) => r.json())
+        .then((allTasks) => setAllTasks(allTasks))
     }, []);
 
     function handleDelete(e) {

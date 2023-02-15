@@ -5,7 +5,7 @@ class User < ApplicationRecord
     has_many :project_roles, dependent: :destroy
     has_one :schedule, dependent: :destroy 
     has_many :projects, through: :project_roles
-    has_many :events, through: :schedule
+    has_many :events, through: :schedule, dependent: :destroy 
 
     accepts_nested_attributes_for :schedule, :project_roles
 

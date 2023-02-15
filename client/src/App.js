@@ -25,7 +25,7 @@ function App() {
             <ProjectProvider>
               <NavBar/>
               <Switch>
-                <Route path="/">
+                <Route exact path="/">
                   <LogInPage/>
                 </Route>
                 <Route path="/signup">
