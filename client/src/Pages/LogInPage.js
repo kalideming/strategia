@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../Context/UserProvider";
-import { useHistory, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function LogInPage(){
+function LogInPage({ user, setUser, onLogin }){
 
     const [errors, setErrors] = useState([]);
-    let { setUser } = useContext(UserContext);
     let history = useHistory();
 
     const [credentials, setCredentials] = useState({
@@ -25,7 +23,7 @@ function LogInPage(){
     function handleSubmit(e) {
         e.preventDefault();
 
-        fetch(`/`, {
+        fetch("/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +31,7 @@ function LogInPage(){
             body: JSON.stringify(credentials)
         }).then((r) => {
             if(r.ok) {
-                r.json().then((currentUser) => setUser(currentUser));
+                r.json().then((user) => setUser(user));
                 history.push("/home")
             } else {
                 r.json().then((err) => setErrors(err.errors));
@@ -76,7 +74,7 @@ function LogInPage(){
 
             <div>
             <label> New to Strategia?</label>
-            <Link onClick={handleToSignUpPage}>Sign Up</Link>
+            <button onClick={handleToSignUpPage}>Sign Up</button>
             </div>
   
             <div>

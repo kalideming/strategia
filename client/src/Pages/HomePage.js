@@ -1,46 +1,64 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../Context/UserProvider";
+import React, { useEffect, useState } from "react";
 
-function HomePage(){
+function HomePage({ user }){
     
-    const { user } = useContext(UserContext);
-    const [ userRoles, setUserRoles ] = useState([]);
-
-    useEffect((user) => {
-        fetch(`/users/${user.id}/project_roles`)
-        .then((r) => r.json())
-        .then((userRoles) => setUserRoles(userRoles));
-    }, []);
-
-    if(!user || !userRoles){
-        return <div>Loading</div>
-    };
-
     const firstName = user.first_name;
     const lastName = user.last_name;
     const position = user.position;
     const company = user.company;
-    const picture = user.image;
+    const photo = user.photo;
 
-    const roleHours = [];
+    console.log(position)
 
-    userRoles.map((role) => {
-        let projectHours = role.required_hours
-        roleHours.push(projectHours);
-        return roleHours;
-    });
+    const [ userRoles, setUserRoles ] = useState([]);
+    
+    useEffect(() => {
+        fetch(`/users/${user.id}/project_roles`)
+        .then((r) => r.json())
+        .then((userRoles) => {
+            setUserRoles(userRoles)
+        })
+    }, []);
 
-    const totalProjectHours = roleHours.reduce((total, amount) => total + amount);
-    const availableHours = user.available_hours;
-    const remainingHours = availableHours - totalProjectHours;
+    console.log(userRoles)
+    console.log(user)
+
+    // let roleHours = [];
+    
+    // userRoles.forEach((role) => {
+    //     const projectHours = role.required_hours
+    //     roleHours.push(projectHours);
+    // })
+    // console.log(userRoles)
+    // useEffect(() => {
+    //     fetch(`/users/${user.id}/project_roles`)
+    //     .then((r) => {
+    //         if(r.ok) {
+    //             r.json().then((userRoles) => setUserRoles(userRoles))
+    //         }
+    //     })
+    // }, [userRoles]);
+
+    // console.log(userRoles)
+
+
+    // user.map((role) => {
+    //     let projectHours = role.required_hours
+    //     roleHours.push(projectHours);
+    //     return roleHours;
+    // });
+
+    // const totalProjectHours = roleHours.reduce((total, amount) => total + amount);
+    // const availableHours = user.available_hours;
+    // const remainingHours = availableHours - totalProjectHours;
 
     return (
         <div>
-            <img src={picture} alt=""/>
+            <img src={photo} alt=""/>
             <h1>Hi, {firstName} {lastName}</h1>
             <h3>{position}</h3>
             <h3>{company}</h3>
-            <p>You have {remainingHours} remaining available hours this week.</p>
+            {/* <p>You have {remainingHours} remaining available hours this week.</p> */}
         </div>
     );
 };

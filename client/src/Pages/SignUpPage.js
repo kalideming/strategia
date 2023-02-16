@@ -1,71 +1,115 @@
-import React, {useContext, useState} from "react";
-import { UserContext } from "../Context/UserProvider";
+import React, { useState, } from "react";
 import { useHistory } from 'react-router-dom';
 
-function SignUpPage() {
+function SignUpPage({ user, setUser }) {
 
     const [errors, setErrors] = useState([]);
-
-    let { setUser } = useContext(UserContext);
     let history = useHistory();
 
-    const [credentials, setCredentials] = useState({
-        first_name: "",
-        last_name: "",
-        company: "",
-        position: "",
-        email: "",
-        username: "",
-        password: "",
-        password_confirmation: ""
-    });
+    const newForm = {
+        first_name: '',
+        last_name: '',
+        company: '',
+        position: '',
+        email: '',
+        username: '',
+        password: ''
+    }
 
-    function handleChange(e) {
-        setCredentials((prevCredentials) => {
-            return {
-                ...prevCredentials,
-                [e.target.name]: e.target.value 
-            }
-        })
+    const [ formData, setFormData ] = useState(newForm);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData({...formData, [name]: value })
     };
 
-    function handleSignUp(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        setErrors([]);
+
+        const formSubmit = {
+            first_name: formData.first_name,
+            last_name: formData.last_name,
+            company: formData.company,
+            position: formData.position,
+            email: formData.email,
+            username: formData.username,
+            password: formData.password
+        };
 
         fetch("/signup", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             }, 
-            body: JSON.stringify(credentials)
-        })
-        .then((r) => {
+            body: JSON.stringify(formSubmit),
+        }).then((r) => {
             if (r.ok) {
                 r.json().then((user) => setUser(user));
-                history.push("/home");
+                history.push("/home")
             } else {
                 r.json().then((err) => setErrors(err.errors));
             }
-        }, []);
+        })
     };
 
+
+    // const [credentials, setCredentials] = useState({
+    //     first_name: "",
+    //     last_name: "",
+    //     company: "",
+    //     position: "",
+    //     email: "",
+    //     username: "",
+    //     password: "",
+    //     password_confirmation: ""
+    // });
+
+    // function handleChange(e) {
+    //     setCredentials((prevCredentials) => {
+    //         return {
+    //             ...prevCredentials,
+    //             [e.target.name]: e.target.value 
+    //         }
+    //     })
+    // };
+
+    // function handleSignUp(e) {
+    //     e.preventDefault();
+    //     setErrors([]);
+
+    //     fetch("/signup", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }, 
+    //         body: JSON.stringify(credentials)
+    //     })
+    //     .then((r) => {
+    //         if (r.ok) {
+    //             r.json().then((user) => setUser(user));
+    //             history.push("/home");
+    //         } else {
+    //             r.json().then((err) => setErrors(err.errors));
+    //         }
+    //     }, []);
+    // };
+
     function handleToLogInPage() {
-        history.push("/")
+        history.push("/login")
     };
 
     return (
         <div>
              <h1>Start Strategizing</h1>
 
-        <form onSubmit={handleSignUp}>
+        <form onSubmit={handleSubmit}>
 
             <div>
                 <label>First Name: </label>
                 <input
                     type="text"
                     name="first_name"
-                    value={credentials.first_name}
+                    value={formData.first_name}
                     onChange={handleChange}
                 />
             </div>
@@ -75,7 +119,7 @@ function SignUpPage() {
                 <input
                     type="text"
                     name="last_name"
-                    value={credentials.last_name}
+                    value={formData.last_name}
                     onChange={handleChange}
                 />
             </div>
@@ -86,7 +130,7 @@ function SignUpPage() {
                     className="SignUpFormInput"
                     type="text"
                     name="company"
-                    value={credentials.company}
+                    value={formData.company}
                     onChange={handleChange}
                 />
             </div>
@@ -96,7 +140,7 @@ function SignUpPage() {
                 <input
                     type="text"
                     name="position"
-                    value={credentials.position}
+                    value={formData.position}
                     onChange={handleChange}
                 />
             </div>
@@ -106,7 +150,7 @@ function SignUpPage() {
                 <input
                     type="text"
                     name="email"
-                    value={credentials.email}
+                    value={formData.email}
                     onChange={handleChange}
                 />
             </div>
@@ -116,7 +160,7 @@ function SignUpPage() {
                 <input
                     type="text"
                     name="username"
-                    value={credentials.username}
+                    value={formData.username}
                     onChange={handleChange}
                 />
             </div>
@@ -126,18 +170,7 @@ function SignUpPage() {
                 <input
                     type="password"
                     name="password"
-                    value={credentials.password}
-                    onChange={handleChange}
-                    autoComplete="current-password"
-                />
-            </div>
-
-            <div>
-                <label>Confirm Password: </label>
-                <input
-                    type="password"
-                    name="password_confirmation"
-                    value={credentials.password_confirmation}
+                    value={formData.password}
                     onChange={handleChange}
                     autoComplete="current-password"
                 />

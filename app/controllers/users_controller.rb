@@ -31,7 +31,8 @@ class UsersController < ApplicationController
     end
 
     def home 
-        render json: current_user, status: :ok
+        user = logged_on_user
+        render json: user, status: :ok
     end
 
     def my_account
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params 
-        params.permit(:first_name, :last_name, :photo, :address, :email, :username, :password, :position, :company, :manager, :upper_management, :available_hours)
+        params.permit(:first_name, :last_name, :photo, :email, :username, :password, :position, :company, :manager, :upper_management, :available_hours)
     end 
 
     def logged_on_user

@@ -1,8 +1,8 @@
 class ProjectRolesController < ApplicationController
    
     def index
-        project_roles = ProjectRole.all 
-        render json: project_roles, include: ['user'], status: :ok 
+        project_roles = ProjectRole.where(:user_id => current_user.id)
+        render json: project_roles, include: ['project'], status: :ok 
     end
 
     def show 
@@ -36,6 +36,10 @@ class ProjectRolesController < ApplicationController
 
     def project_role_params 
         params.permit(:role_title, :project_head, :required_hours, :description, :user)
+    end
+
+    def logged_on_user
+        User.where(:id => current_user.id)
     end
 
 end

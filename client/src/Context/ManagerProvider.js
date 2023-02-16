@@ -8,6 +8,7 @@ function ManagerProvider({ children }) {
     const { user } = useContext(UserContext);
     const [ isManager, setIsManager ] = useState(false);
 
+
     if (user.manager === true) {
         setIsManager(true)
     } else {

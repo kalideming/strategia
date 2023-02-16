@@ -21,8 +21,8 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   get "/home", to: "users#home"
   get "/myaccount", to: "users#my_account"
-
-  post "/", to: "sessions#create"
+  
+  post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
   get "/companyprojects", to: "projects#company_projects"
@@ -30,7 +30,11 @@ Rails.application.routes.draw do
   patch "/updateproject", to: "projects#update"
   delete "/deleteproject", to: "projects#destroy"
 
+  get "users/:user_id/project_roles", to: "project_roles#index"
+
   get "/myprojects", to: "project_roles#my_projects"
+
+  
 
   # get '*path', to: 'fallback#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 
