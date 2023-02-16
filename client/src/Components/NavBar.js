@@ -22,21 +22,21 @@ function NavBar({ user, setUser }) {
     };
 
     return (
-        <div>
+        <div className="nav-container">
             {!user ? (
                 <h1>Strategia</h1>
             ) : (
-                <div>
-                    <h1 onClick={home}>Strategia</h1>
+                <span className="nav">
+                    <h1 className="nav-title" onClick={home}>Strategia</h1>
                     <nav>
-                        <NavLink to="/home">Home</NavLink>
-                        <NavLink to="/myaccount">My Account</NavLink>
-                        <NavLink to="/myprojects">My Projects</NavLink>
+                        <NavLink to="/home" className="nav-link">Home</NavLink>
+                        <NavLink to="/myaccount" className="nav-link">My Account</NavLink>
+                        <NavLink to="/myprojects" className="nav-link">My Projects</NavLink>
                         {/* <CompanyProjsLink user={user}/>
                         <NewProjectLink user={user}/> */}
-                        <NavLink to="/logout" onClick={onLogOut}>Log Out</NavLink>
+                        <NavLink to="/logout" onClick={onLogOut} className="nav-link">Log Out</NavLink>
                     </nav>
-                </div>
+                </span>
             )}
         </div>
     );

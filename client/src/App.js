@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LogInPage from "./Pages/LogInPage";
-import SignUpPage from "./Pages/SignUpPage";
+// import SignUpPage from "./Pages/SignUpPage";
 import { Switch, Route } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import HomePage from "./Pages/HomePage";
@@ -32,9 +32,9 @@ function App() {
         <Route path="/login">
           <LogInPage user={user} setUser={setUser}/>
         </Route>
-        <Route path="/signup">
+        {/* <Route path="/signup">
           <SignUpPage user={user} setUser={setUser}/>
-        </Route>
+        </Route> */}
         <Route path="/home">
           <HomePage user={user} setUser={setUser}/>
         </Route>

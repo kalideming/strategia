@@ -25,12 +25,22 @@ function HomePage({ user, setUser }){
     console.log(remainingHours)
 
     return (
-        <div>
-            <img src={photo} alt=""/>
-            <h1>Hi, {firstName} {lastName}</h1>
-            <h3>{position}</h3>
-            <h3>{company}</h3>
-            <p>You have {remainingHours} remaining available hours this week.</p>
+        <div className="container">
+        <div className="container">
+            <div className="avatar">
+                <img src={photo} alt="" />
+            </div>
+            <div className="container">
+            <div className="box">
+                <h1 className="welcome-back">Welcome back, {firstName}.</h1>
+                <h3 className="company-position">{position} at {company}</h3>
+                <div className="hours-container">
+                    <p className="remaining-hours">{remainingHours} </p>
+                    <p className="remaining-hours-text"> remaining available hours this week.</p>
+                </div>
+            </div>
+            </div>
+        </div>
         </div>
     );
 };
