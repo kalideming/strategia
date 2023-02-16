@@ -2,15 +2,14 @@ import React, { useState } from "react";
 
 function UpdateAccountForm({ user, setUser, onClose }) {
 
-    console.log(user)
-    const firstName = user[0].first_name;
-    const lastName = user[0].last_name;
-    const position = user[0].position;
-    const photo = user[0].photo;
-    const email = user[0].email;
-    const username = user[0].username;
-    const password = user[0].password;
-    const availableHours = user[0].available_hours
+    const firstName = user.first_name;
+    const lastName = user.last_name;
+    const position = user.position;
+    const photo = user.photo;
+    const email = user.email;
+    const username = user.username;
+    const password = user.password;
+    const availableHours = user.available_hours
 
     const newForm = {
         firstName: "",
