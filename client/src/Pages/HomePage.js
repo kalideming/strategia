@@ -1,56 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-function HomePage({ user }){
+function HomePage({ user, setUser }){
     
-    const firstName = user.first_name;
-    const lastName = user.last_name;
-    const position = user.position;
-    const company = user.company;
-    const photo = user.photo;
+    const firstName = user[0].first_name;
+    const lastName = user[0].last_name;
+    const position = user[0].position;
+    const company = user[0].company.name;
+    const photo = user[0].photo;
+    const availableHours = user[0].available_hours
+    const userRoles = user[0].project_roles
 
-    console.log(position)
+    const roleHours = []
 
-    const [ userRoles, setUserRoles ] = useState([]);
-    
-    useEffect(() => {
-        fetch(`/users/${user.id}/project_roles`)
-        .then((r) => r.json())
-        .then((userRoles) => {
-            setUserRoles(userRoles)
-        })
-    }, []);
+    userRoles.map((role) => {
+       const requiredHours = role.required_hours
+       roleHours.push(requiredHours)
+    });
 
-    console.log(userRoles)
-    console.log(user)
+    console.log(roleHours)
 
-    // let roleHours = [];
-    
-    // userRoles.forEach((role) => {
-    //     const projectHours = role.required_hours
-    //     roleHours.push(projectHours);
-    // })
-    // console.log(userRoles)
-    // useEffect(() => {
-    //     fetch(`/users/${user.id}/project_roles`)
-    //     .then((r) => {
-    //         if(r.ok) {
-    //             r.json().then((userRoles) => setUserRoles(userRoles))
-    //         }
-    //     })
-    // }, [userRoles]);
+    const totalProjectHours = roleHours.reduce((total, amount) => total + amount);
+    const remainingHours = availableHours - totalProjectHours;
 
-    // console.log(userRoles)
-
-
-    // user.map((role) => {
-    //     let projectHours = role.required_hours
-    //     roleHours.push(projectHours);
-    //     return roleHours;
-    // });
-
-    // const totalProjectHours = roleHours.reduce((total, amount) => total + amount);
-    // const availableHours = user.available_hours;
-    // const remainingHours = availableHours - totalProjectHours;
+    console.log(remainingHours)
 
     return (
         <div>
@@ -58,7 +30,7 @@ function HomePage({ user }){
             <h1>Hi, {firstName} {lastName}</h1>
             <h3>{position}</h3>
             <h3>{company}</h3>
-            {/* <p>You have {remainingHours} remaining available hours this week.</p> */}
+            <p>You have {remainingHours} remaining available hours this week.</p>
         </div>
     );
 };

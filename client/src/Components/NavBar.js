@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
-import { UserContext } from "../Context/UserProvider";
+import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import CompanyProjsLink from "./CompanyProjsLink";
-import NewProjectLink from "./NewProjectLink";
+// import CompanyProjsLink from "./CompanyProjsLink";
+// import NewProjectLink from "./NewProjectLink";
 
-function NavBar() {
+function NavBar({ user, setUser }) {
 
-    let { user, setUser } = useContext(UserContext);
     let history = useHistory();
 
     function onLogOut() {
@@ -31,12 +29,12 @@ function NavBar() {
                 <div>
                     <h1 onClick={home}>Strategia</h1>
                     <nav>
-                        <NavLink exact to="/home">Home</NavLink>
-                        <NavLink exact to="/myaccount">My Account</NavLink>
-                        <NavLink exact to="/myprojects">My Projects</NavLink>
-                        <CompanyProjsLink/>
-                        <NewProjectLink/>
-                        <NavLink exact to="/" onClick={onLogOut}>Log Out</NavLink>
+                        <NavLink to="/home">Home</NavLink>
+                        <NavLink to="/myaccount">My Account</NavLink>
+                        <NavLink to="/myprojects">My Projects</NavLink>
+                        {/* <CompanyProjsLink user={user}/>
+                        <NewProjectLink user={user}/> */}
+                        <NavLink to="/logout" onClick={onLogOut}>Log Out</NavLink>
                     </nav>
                 </div>
             )}

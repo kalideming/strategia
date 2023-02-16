@@ -33,6 +33,8 @@ Rails.application.routes.draw do
   get "users/:user_id/project_roles", to: "project_roles#index"
 
   get "/myprojects", to: "project_roles#my_projects"
+  
+
 
   
 

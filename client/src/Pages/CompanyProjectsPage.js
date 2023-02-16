@@ -1,14 +1,26 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import CompanyProjectsList from "../Components/CompanyProjectsList";
-import { UpperManagContext } from "../Context/UpperManagProvider";
-import { ManagerContext } from "../Context/ManagerProvider";
 
-function CompanyProjectsPage() {
+function CompanyProjectsPage({ user }) {
 
-    const [ isManager ] = useContext(ManagerContext);
-    const [ isUpperManag ] = useContext(UpperManagContext);
+    const currentUser = user[0];
+    console.log(currentUser)
+    const [ isManager, setIsManager ] = useState(false);
+    const [ isUpperManagement, setIsUpperManagement ] = useState(false);
+    let [ companyProjects, setCompanyProjects ] = useState([]);
+    const [ canSeeAllProjs, setCanSeeAllProjs ] = useState
 
-    let [ companyProjects, setCompanyProjects ] = useState({});
+    if (user[0].manager === true) {
+        setIsManager(true)
+    };
+
+    if (user[0].upper_management === true) {
+        setIsUpperManagement(true)
+    };
+
+    if (isManager && isUpperManagement) {
+        setCanSeeAllProjs(true)
+    };
 
     useEffect(() => {
         fetch("/companyprojects")
@@ -18,7 +30,7 @@ function CompanyProjectsPage() {
 
     return (
         <div>
-            {isManager || isUpperManag ? (
+            {canSeeAllProjs ? (
                 <div>
                     <CompanyProjectsList companyProjects={companyProjects}/>
                 </div>

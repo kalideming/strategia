@@ -28,13 +28,17 @@ class ProjectsController < ApplicationController
     end
 
     def company_projects 
-        projects = Project.where(:company_id => current_user.company_id)
+        projects = Project.where(:company_id => logged_on_user.company_id)
     end
  
     private
 
     def project_params 
         params.permit(:title, :description, :deadline, :photo, :documentation)
+    end
+
+    def logged_on_user
+        User.where(:id => current_user.id)
     end
 
 end

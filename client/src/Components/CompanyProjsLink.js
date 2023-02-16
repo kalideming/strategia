@@ -1,23 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { ManagerContext } from "../Context/ManagerProvider";
-import { UpperManagContext } from "../Context/UpperManagProvider";
 
-function CompanyProjsLink() {
+function CompanyProjsLink({ user }) {
 
-    const { isUpperManag } = useContext(UpperManagContext);
-    const { isManager } = useContext(ManagerContext);
-    const [ canSeeAllProjs, setCanSeeAllProjs ] = useState(false);
+    const [ isManager, setIsManager ] = useState(false);
+    const [ isUpperManagement, setIsUpperManagement ] = useState(false);
+    const [ canSeeAllProjs, setCanSeeAllProjs ] = useState
 
+    if (user[0].manager === true) {
+        setIsManager(true)
+    };
 
-    if (isUpperManag || isManager) {
+    if (user[0].upper_management === true) {
+        setIsUpperManagement(true)
+    };
+
+    if (isManager && isUpperManagement) {
         setCanSeeAllProjs(true)
     };
-    
+
     return (
         <div>
         {canSeeAllProjs ? (
-            <NavLink exact to="/companyprojects">Company Projects</NavLink>
+            <NavLink to="/companyprojects">Company Projects</NavLink>
         ) : (
             (null)
         )}

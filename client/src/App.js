@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import LogInPage from "./Pages/LogInPage";
 import SignUpPage from "./Pages/SignUpPage";
 import { Switch, Route } from "react-router-dom";
-// import NavBar from "./Components/NavBar";
+import NavBar from "./Components/NavBar";
 import HomePage from "./Pages/HomePage";
 import AccountPage from "./Pages/AccountPage";
 import MyProjectsPage from "./Pages/MyProjectsPage";
@@ -27,7 +27,7 @@ function App() {
 
   return(
     <div>
-      {/* <NavBar/> */}
+      <NavBar user={user} setUser={setUser}/>
       <Switch>
         <Route path="/login">
           <LogInPage user={user} setUser={setUser}/>

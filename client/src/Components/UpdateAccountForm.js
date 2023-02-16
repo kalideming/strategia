@@ -1,59 +1,91 @@
-import React, { useState, useContext } from "react";
-import { UserContext } from "../Context/UserProvider";
+import React, { useState } from "react";
 
-function UpdateAccountForm({ onClose }) {
+function UpdateAccountForm({ user, setUser, onClose }) {
 
-    let { user, setUser } = useContext(UserContext);
+    console.log(user)
+    const firstName = user[0].first_name;
+    const lastName = user[0].last_name;
+    const position = user[0].position;
+    const photo = user[0].photo;
+    const email = user[0].email;
+    const username = user[0].username;
+    const password = user[0].password;
+    const availableHours = user[0].available_hours
 
-    const [ account, setAccount ] = useState({
-        first_name: user.first_name,
-        last_name: user.last_name,        
-        position: user.position,
-        available_hours: user.available_hours,
-        photo: user.photo,
-        email: user.email, 
-        username: user.username,
-        password: user.password,
-        company: user.company,
-        manager: user.manager, 
-        upper_management: user.upper_management
+    const newForm = {
+        firstName: "",
+        lastName: "",
+        position: "",
+        photo: "",
+        email: "",
+        username: "",
+        password: "",
+        availableHours: ""
+    };
+
+    const [ formData, setFormData ] = useState({
+        firstName: firstName,
+        lastName: lastName,
+        position: position,
+        photo: photo,
+        email: email,
+        username: username,
+        password: password,
+        availableHours: availableHours
     });
 
-    function handleEditAccount(e) {
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setFormData({...formData, [name]: value})
+    };
 
+    const submitUpdate = (e) => {
         e.preventDefault();
 
-        fetch(`/users/${user.id}`, {
+        const updateAccount = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            position: formData.position,
+            photo: formData.photo,
+            email: formData.email,
+            username: formData.username,
+            password: formData.password,
+            availableHours: formData.availableHours
+        };
+
+        fetch("/myaccount", {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(account)
+            body: JSON.stringify(updateAccount)
         })
-        .then(() => {setUser(account)});
-
-        onClose();
-    };
-
-    function handleChange(e) {
-        setAccount((prev) => {
-            return {
-                ...prev,
-                [e.target.name]: e.target.value 
-            };
-        });
+        .then((r) => r.json())
+        .then((updatedAccount) => {
+            setUser(updatedAccount)
+            setFormData({
+                firstName: updatedAccount.firstName,
+                lastName: updatedAccount.lastName,
+                position: updatedAccount.position,
+                photo: updatedAccount.photo,
+                email: updatedAccount.email,
+                username: updatedAccount.username,
+                password: updatedAccount.password,
+                availableHours: updatedAccount.availableHours
+            })
+        })
     };
 
     return (
         <div>
             <h1>Edit Account Information:</h1>
-            <form onSubmit={handleEditAccount}>
+            <form onSubmit={submitUpdate}>
                 <div>
                     <label>First Name:</label>
                     <input
                         type="text"
                         name="first_name"
-                        value={account.first_name}
+                        value={formData.firstName}
                         onChange={handleChange}
                     />
                 </div>
@@ -62,7 +94,7 @@ function UpdateAccountForm({ onClose }) {
                     <input
                         type="text"
                         name="last_name"
-                        value={account.last_name}
+                        value={formData.lastName}
                         onChange={handleChange}
                     />
                 </div>
@@ -71,7 +103,7 @@ function UpdateAccountForm({ onClose }) {
                     <input
                         type="text"
                         name="position"
-                        value={account.position}
+                        value={formData.position}
                         onChange={handleChange}
                     />
                 </div>
@@ -80,7 +112,7 @@ function UpdateAccountForm({ onClose }) {
                     <input
                         type="text"
                         name="available_hours"
-                        value={account.available_hours}
+                        value={formData.availableHours}
                         onChange={handleChange}
                     />
                 </div>
@@ -89,7 +121,7 @@ function UpdateAccountForm({ onClose }) {
                     <input
                         type="text"
                         name="photo"
-                        value={account.photo}
+                        value={formData.photo}
                         onChange={handleChange}
                     />
                 </div>
@@ -98,7 +130,7 @@ function UpdateAccountForm({ onClose }) {
                     <input
                         type="text"
                         name="email"
-                        value={account.email}
+                        value={formData.email}
                         onChange={handleChange}
                     />
                 </div>
@@ -107,7 +139,7 @@ function UpdateAccountForm({ onClose }) {
                     <input
                         type="text"
                         name="username"
-                        value={account.username}
+                        value={formData.username}
                         onChange={handleChange}
                     />
                 </div>
@@ -116,7 +148,7 @@ function UpdateAccountForm({ onClose }) {
                     <input
                         type="new-password"
                         name="password"
-                        value={account.password}
+                        value={formData.password}
                         onChange={handleChange}
                     />
                 </div>
