@@ -31,8 +31,11 @@ Rails.application.routes.draw do
   delete "/deleteproject", to: "projects#destroy"
 
   get "users/:user_id/project_roles", to: "project_roles#index"
+  get "projects/:id/project_roles", to: "project_roles#index"
 
   get "/myprojects", to: "project_roles#my_projects"
+  get "/projects/:id", to:"projects#show"
+  get "/allprojectmembers", to: "project_roles#index"
   
 
 

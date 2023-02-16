@@ -1,31 +1,34 @@
 import React from "react";
-// import { UserContext } from "../Context/UserProvider";
 import MemberCard from "./MemberCard";
-// import NewMemberSearch from "./NewMemberSearch";
 
-function MemberList({ projectMembers, project }) {
 
-    // const { user } = useContext(UserContext);
-    // const [ canAdd, setCanAdd ] = useState(false);
+function MemberList({ project, user }) {
+
+    // console.log(project.project_roles)
+    // const [ projectMembers, setProjectMembers ] = useState([]);
+    const projectMembers = project.project_roles;
+
+    console.log(projectMembers)
+    
+    if (!projectMembers) {
+        return (
+            <div>loading</div>
+        );
+    };
+
+    // useEffect(() => {
+    //     fetch(`/projects/${project.id}/project_roles`)
+    //     .then((r) => r.json())
+    //     .then((projectMembers) => setProjectMembers(projectMembers))
+    // }, []);
 
     const mappedMembers = projectMembers.map(member => {
-        return<MemberCard key={member.id} member={member} project={project}/>
+        return<MemberCard key={member.id} member={member} project={project} user={user}/>
     })
-
-    // if (user.manager === true || user.upper_management === true) {
-    //     setCanAdd(true)
-    // };
 
     return (
         <div>
-            <ul>{mappedMembers}</ul>
-            {/* <div>
-                {canAdd ? (
-                   <NewMemberSearch project={project}/> 
-                ) : (
-                    (null)
-                )}
-            </div>   */}
+            <div>{mappedMembers}</div>
         </div>
     );
 };

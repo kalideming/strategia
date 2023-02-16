@@ -5,7 +5,7 @@ class Project < ApplicationRecord
     has_many :tasks, dependent: :destroy 
     has_many :users, through: :project_roles
 
-    accepts_nested_attributes_for :project_roles
+    accepts_nested_attributes_for :project_roles, :company
 
     validates_presence_of :title, :deadline
     

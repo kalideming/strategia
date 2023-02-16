@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 
 function ProjectPage({ user }){
 
-    // const currentUser = user[0];
     const [ project, setProject ] = useState([]);
     const { id } = useParams();
 
@@ -17,15 +16,12 @@ function ProjectPage({ user }){
         .then((project) => setProject(project))    
     }, []);
 
-    let projectMembers = project.project_roles
-    let projectTasks = project.tasks 
-
     return (
-        <div>
-            <ProjectInfo project={project}/>
-            <MemberList projectMembers={projectMembers} project={project}/>
-            <TaskList tasks={projectTasks}/>
-            <UpdateProjectButton project={project} user={user}/>
+        <div className="project-page">
+            <ProjectInfo className="project-info-container" project={project} user={user}/>
+            <MemberList className="member-list-container" project={project} user={user}/>
+            {/* <TaskList tasks={projectTasks}/>
+            <UpdateProjectButton project={project} user={user}/> */}
         </div>
     );
 

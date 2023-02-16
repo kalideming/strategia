@@ -1,20 +1,20 @@
 import React from "react";
 
-function ProjectInfo({ project }) {
+function ProjectInfo({ project, user }) {
 
-    let title = project.title;
-    let company = project.company.name;
-    let description = project.description;
-    let picture = project.photo;
-    let deadline = project.deadline;
+    const title = project.title;
+    const description = project.description;
+    const picture = project.photo;
+    const deadline = project.deadline;
+
+    console.log(project)
 
     return (
-        <div>
-            <img src={picture}/>
-            <h1>{title}</h1>
-            <h2>{company}</h2>
-            <h3>Deadline: {deadline}</h3>
-            <p>{description}</p>
+        <div className="container">
+            <img className="project-info-img" src={picture}/>
+            <h1 className="project-info-title">{title}</h1>
+            <h3 className="project-info-deadline">Deadline: {deadline}</h3>
+            <p className="project-info-description">{description}</p>
         </div>
     );
 };

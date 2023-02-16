@@ -7,12 +7,10 @@ function MyProjectsPage({ user }){
     const [ projectRoles, setProjectRoles ] = useState([]);
 
     useEffect(() => {
-        fetch(`/users/${currentUser.id}/project_roles`)
+        fetch("/myprojects")
         .then((r) => r.json())
         .then((projectRoles) => setProjectRoles(projectRoles))
     }, []);
-
-    console.log(projectRoles)
 
     return (
         <div>

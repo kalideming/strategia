@@ -1,13 +1,18 @@
 class ProjectRolesController < ApplicationController
    
     def index
-        project_roles = ProjectRole.where(:user_id => current_user.id)
-        render json: project_roles, include: ['project'], status: :ok 
+        project_roles = ProjectRole.all
+        render json: project_roles, include: ['project', 'user'], status: :ok 
     end
 
     def show 
         project_role = ProjectRole.find(params[:id])
         render json: project_role, include: ['user'], status: :ok 
+    end
+
+    def project_members
+        members = ProjectRole.all
+        render json: project_members, include: ['user'], status: :ok
     end
 
     def update 
