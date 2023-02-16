@@ -18,7 +18,7 @@ function ProjectPage({ user }){
 
     return (
         <div className="project-page">
-            <ProjectInfo className="project-info-container" project={project} user={user}/>
+            <ProjectInfo className="project-info" project={project} user={user}/>
             <MemberList className="member-list-container" project={project} user={user}/>
             {/* <TaskList tasks={projectTasks}/>
             <UpdateProjectButton project={project} user={user}/> */}

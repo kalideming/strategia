@@ -76,90 +76,60 @@ function MemberCard({ member, project, user }) {
     };
 
     return (
-        <div>
-            <img src={memberUser.photo} alt=""/>
-            <h2>{memberUser.first_name} {memberUser.last_name}</h2>
-            <h1>{member.role_title}</h1>
-            <p>{member.description}</p>
-            {(!canEdit) ? (
-                null
-            ) : (
-                <div>
-                    {(!showMemberUpdate) ? (
-                        <button onClick={switchMemberUpdate}>Update Project Member</button>
-                    ) : (
-                        <div>
-                            <h3>Update Member Information</h3>
-                            <form onSubmit={submitUpdate}>
-                                <div>
-                                    <label>Update Role:</label>
-                                    <input
-                                        type="text"
-                                        name="roleTitle"
-                                        value={formData.roleTitle}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Update Required Hours:</label>
-                                    <input
-                                        type="text"
-                                        name="requiredHours"
-                                        value={formData.requiredHours}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <div>
-                                    <label>Update Description:</label>
-                                    <input
-                                        type="text"
-                                        name="description"
-                                        value={formData.description}
-                                        onChange={handleChange}
-                                    />
-                                </div>
-                                <button type="submit">Submit Update</button>
-                            </form>
-                            <button onClick={switchMemberUpdate}>Hide Member Update</button>
-                        </div>
-                    )}
-                    <button onClick={deleteMember}>Remove Project Member</button>
-                </div>
-            )}
+        <div className="member-card-container">
+            <div className="member-card">
+                <img className="member-card-img" src={memberUser.photo} alt=""/>
+                <h2 className="member-card-name">{memberUser.first_name} {memberUser.last_name}</h2>
+                <h1 className="member-card-role">{member.role_title}</h1>
+                <p className="member-card-description">{member.description}</p>
+                {(!canEdit) ? (
+                    null
+                ) : (
+                    <div>
+                        <button onClick={deleteMember}>Delete Project Member</button>
+                        {(!showMemberUpdate) ? (
+                            <button onClick={switchMemberUpdate}>Update Project Member</button>
+                        ) : (
+                            <div>
+                                <h3>Update Member Information</h3>
+                                <form onSubmit={submitUpdate}>
+                                    <div>
+                                        <label>Update Role:</label>
+                                        <input
+                                            type="text"
+                                            name="roleTitle"
+                                            value={formData.roleTitle}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label>Update Required Hours:</label>
+                                        <input
+                                            type="text"
+                                            name="requiredHours"
+                                            value={formData.requiredHours}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label>Update Description:</label>
+                                        <input
+                                            type="text"
+                                            name="description"
+                                            value={formData.description}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                    <button type="submit">Submit Update</button>
+                                </form>
+                                <button onClick={switchMemberUpdate}>Hide Member Update</button>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
 
 export default MemberCard;
-
-
-
-
-
-
-
-
-
-    // if (currentUser.manager === true) {
-    //     setCanEdit(true)
-    // } else if (currentUser.upper_management === true) {
-    //     setCanEdit(true)
-    // } else {
-    //     setCanEdit(false)
-    // }
-
-    // const [ canEdit, setCanEdit ] = useState(false);
-
-    // function handleDelete(e) {
-    //     fetch(`/project_roles/${member.id}`, {
-    //         method: "DELETE"
-    //     });
-    //     deletedMember();
-    // };
-
-    // function deletedMember() {
-    //     const updatedMembers = roles.filter(deletedMember => {
-    //         return deletedMember.id !== member.id 
-    //     });
-    //     setRoles(updatedMembers);
-    // };

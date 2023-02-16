@@ -280,3 +280,63 @@ body {
   padding: 0px;
   margin: 0px;
 }
+
+.project-info {
+  display: block;
+  float: right;
+  max-width: 60%;
+}
+.project-info-container {
+  display: flex;
+  max-width: 65%;
+  justify-items: center;
+  flex-direction: column;
+  float: right;
+  margin: 20px;
+}
+
+
+.member-list-container {
+  display: block;
+  float: left;
+  max-width: 20%;
+}
+
+.member-cards {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  max-width: 30%;
+
+}
+
+.member-cards-item {
+  display: flex;
+  justify-self: left;
+  position:absolute;
+  padding: 1rem;
+}
+
+.member-card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.member-card-info:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.member-card-img {
+  height: auto;
+  max-width: 50%;
+  vertical-align: middle;
+}
+.member-info {
+  align-items: center;
+}

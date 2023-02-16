@@ -10,7 +10,7 @@ function ProjectInfo({ project, user }) {
     console.log(project)
 
     return (
-        <div className="container">
+        <div className="project-info-container">
             <img className="project-info-img" src={picture}/>
             <h1 className="project-info-title">{title}</h1>
             <h3 className="project-info-deadline">Deadline: {deadline}</h3>
