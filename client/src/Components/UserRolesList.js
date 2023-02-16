@@ -8,9 +8,9 @@ function UserRolesList({ projectRoles }) {
     });
 
     return (
-        <ul>
+        <div className="my-role-cards">
             {mappedRoles}
-        </ul>
+        </div>
     );
 };
 
