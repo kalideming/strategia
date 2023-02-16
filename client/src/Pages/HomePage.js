@@ -17,7 +17,6 @@ function HomePage({ user, setUser }){
        roleHours.push(requiredHours)
     });
 
-    console.log(roleHours)
 
     const totalProjectHours = roleHours.reduce((total, amount) => total + amount);
     const remainingHours = availableHours - totalProjectHours;
