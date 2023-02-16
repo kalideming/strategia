@@ -29,7 +29,7 @@ function LogInForm({ onLogin }) {
             <label className="password"><b>Password</b></label>
             <input type="text" value={password} onChange = {(e) => setPassword(e.target.value)}></input>
             <br></br>
-            <button class="login-button">{isLoading ? "Loading..." : "Login"}</button>
+            <button className="login-button">{isLoading ? "Loading..." : "Login"}</button>
         </form>
     )
 };

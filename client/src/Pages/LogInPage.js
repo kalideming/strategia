@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useHistory } from "react-router-dom";
 import LogInForm from "../Components/LogInForm";
 import SignUpForm from "../Components/SignUpForm";
 
@@ -11,14 +10,22 @@ function LogInPage({ onLogin }){
         show ? (
             <div className="login-container">
                 <LogInForm onLogin={onLogin}/>
-                Don't have an account?
-                <button className="alt-bttn" onClick={() => setShow(false)}>Sign Up</button>
+                <br></br>
+                <div className="alt-container">
+                    <p className="alt-text">Don't have an account?</p>
+                    <button className="alt-bttn" onClick={() => setShow(false)}>Sign Up</button>
+                    <br></br>
+                </div>
             </div>
         ) : (
-            <div className="signup-container">
-                <SignUpForm onLogin={onLogin} />
-                Already have an account?
-                <button className="alt-bttn" onClick={() => setShow(true)}>Log In</button>
+            <div className="login-container">
+                <SignUpForm onLogin={onLogin}/>
+                <br></br>
+                <div className="alt-conatiner">
+                    <p className="alt-text">Already have an account?</p>
+                    <button className="alt-bttn" onClick={() => setShow(true)}>Log In</button>
+                    <br></br>
+                </div>
             </div>
         )
     );

@@ -26,24 +26,42 @@ function AccountPage({ user, setUser }) {
     const password = user[0].password;
     const availableHours = user[0].available_hours
 
+   
     return (
         <div>
-            <div>
+        <div className="container">
+            <div className="avatar">
                 <img src={photo} alt=""/>
-                <h1>{firstName} {lastName}</h1>
-                <h2>{position}</h2>
-                <h3>{company}</h3>
-                <ul>
-                    <li>{email}</li>
-                    <li>{password}</li>
-                    <li>{username}</li>
-                    <li>{availableHours}</li>
-                </ul>
             </div>
-            <button
+        </div> 
+        <div className="box">
+            <h1 className="welcome-back">{firstName} {lastName}</h1>
+            <h2 className="company-position">{position}</h2>
+            <h3 className="company-position">{company}</h3>
+            <div className="account-info-grid">
+                <div className="account-grid-item">
+                    <p className="account-grid-content">Email:</p>
+                    <p className="account-grid-content">{email}</p>
+                </div>
+                <div className="account-grid-item">
+                    <p className="account-grid-header">Password:</p>
+                    <p className="account-grid-content">{password}</p>
+                </div>
+                <div className="account-grid-item">
+                    <p className="account-grid-header">Username:</p>
+                    <p className="account-grid-content">{username}</p>
+                </div>
+                <div className="account-grid-item">
+                    <p className="account-grid-header">Available Hours:</p>
+                    <p className="account-grid-content">{availableHours}</p>
+                </div>
+            </div>
+        </div>
+        <div className="account-button-container">
+            <button className="account-button"
                 type="button"
-                onClick={() => setIsPopUpOpen(true)}
-            >
+                    onClick={() => setIsPopUpOpen(true)}
+                >
                 Edit Account 
             </button>
             <div>
@@ -53,7 +71,8 @@ function AccountPage({ user, setUser }) {
                     (null)
                 )}
             </div>
-            <button onClick={deleteAccount}>Delete Account</button>
+            <button className="account-button" onClick={deleteAccount}>Delete Account</button>
+        </div>
         </div>
     );
 };

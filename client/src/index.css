@@ -143,6 +143,7 @@ body {
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   padding: 10px;
   font-size: 20px;
+  text-rendering: optimizeLegibility;
 
 }
 
@@ -150,4 +151,69 @@ body {
   font-family: 'Courier New', Courier, monospace;
   padding: 10px;
   font-size: 20px;
+  text-rendering: optimizeLegibility;
+}
+
+.alt-container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background:rgb(239, 232, 232, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.alt-text {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 20px;
+  color: black;
+  text-rendering: optimizeLegibility;
+}
+
+.account-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin: 0;
+  max-width: 100%;
+}
+
+.account-grid-item {
+  padding: 5px;
+  margin: 5px;
+  max-width: max-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.account-grid-content {
+  text-align: start;
+  margin: 5px;
+}
+
+.account-grid-header {
+  text-align: center;
+  margin: 5px;
+}
+
+.account-button-container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.account-button {
+  padding: 5px;
+  margin: 20px;
+  width: 200px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: medium;
+  background:#d7c8c8;
+  border-color: #0e0d0d;
 }

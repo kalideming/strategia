@@ -24,12 +24,13 @@ function SignUpForm({ onLogin }) {
         })
     }
     return(
-        <form onSubmit = {handleSubmit}>
-            <label><b>Username</b></label>
+        <form onSubmit = {handleSubmit} className="login">
+            <label className="username"><b>Username</b></label>
             <input type="text" value={username} onChange = {(e) => setUsername(e.target.value)} ></input>
-            <label><b>Password</b></label>
+            <label className="password"><b>Password</b></label>
             <input type="text" value={password} onChange = {(e) => setPassword(e.target.value)}></input>
-            <button>{isLoading ? "Loading..." : "Sign Up"}</button>
+            <br></br>
+            <button className="login-button">{isLoading ? "Loading..." : "Sign Up"}</button>
         </form>
     );
 };
