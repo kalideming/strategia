@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :project_roles
   end
   
+  resources :tasks
+
   post "/signup", to: "users#create"
   get "/home", to: "users#home"
   get "/myaccount", to: "users#my_account"
@@ -36,6 +38,7 @@ Rails.application.routes.draw do
   get "/myprojects", to: "project_roles#my_projects"
   get "/projects/:id", to:"projects#show"
   get "/allprojectmembers", to: "project_roles#index"
+  get "/tasks/:id", to: "tasks#show"
   
 
 

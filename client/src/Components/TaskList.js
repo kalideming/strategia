@@ -12,7 +12,7 @@ function TaskList({ project, user}) {
     };
 
     const mappedProjectTasks = projectTasks.map(task => {
-        return <TaskCard key={task.id} task={task} project={project}/>
+        return <TaskCard key={task.id} task={task} project={project} user={user}/>
     })
 
     return (

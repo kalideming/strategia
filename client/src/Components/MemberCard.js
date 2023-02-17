@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import MemberUpdateButton from "./MemberUpdateButton";
 
 function MemberCard({ member, project, user }) {
     
