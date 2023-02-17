@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import MemberList from "../Components/MemberList";
 import TaskList from "../Components/TaskList";
 import ProjectInfo from "../Components/ProjectInfo";
-import UpdateProjectButton from "../Components/UpdateProjectButton";
+// import UpdateProjectButton from "../Components/UpdateProjectButton";
 import { useParams } from "react-router-dom";
 
 function ProjectPage({ user }){
@@ -16,12 +16,13 @@ function ProjectPage({ user }){
         .then((project) => setProject(project))    
     }, []);
 
+    console.log(project.tasks)
     return (
         <div className="project-page">
             <ProjectInfo className="project-info" project={project} user={user}/>
             <MemberList className="member-list-container" project={project} user={user}/>
-            {/* <TaskList tasks={projectTasks}/>
-            <UpdateProjectButton project={project} user={user}/> */}
+            <TaskList project={project} user={user}/>
+            {/* <UpdateProjectButton project={project} user={user}/> */}
         </div>
     );
 

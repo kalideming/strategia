@@ -1,17 +1,23 @@
 import React from "react";
 import TaskCard from "./TaskCard";
 
-function TaskList({ projectTasks }) {
+function TaskList({ project, user}) {
 
-    const mappedTasks = projectTasks.map(task => {
-        return <TaskCard key={task.id} task={task}/>
-    });
+    const projectTasks = project.tasks 
+
+    if(!projectTasks) {
+        return (
+            <div>loading</div>
+        );
+    };
+
+    const mappedProjectTasks = projectTasks.map(task => {
+        return <TaskCard key={task.id} task={task} project={project}/>
+    })
 
     return (
-        <ul>
-            {mappedTasks}
-        </ul>
-    )
+        <div>{mappedProjectTasks}</div>
+    );
 };
 
 export default TaskList;

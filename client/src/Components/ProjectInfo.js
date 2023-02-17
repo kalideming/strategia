@@ -11,8 +11,9 @@ function ProjectInfo({ project, user }) {
 
     return (
         <div className="project-info-container">
-            <img className="project-info-img" src={picture}/>
             <h1 className="project-info-title">{title}</h1>
+            <img className="project-info-img" src={picture}/>
+            
             <h3 className="project-info-deadline">Deadline: {deadline}</h3>
             <p className="project-info-description">{description}</p>
         </div>

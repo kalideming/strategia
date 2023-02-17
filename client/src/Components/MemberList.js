@@ -5,8 +5,6 @@ import MemberCard from "./MemberCard";
 function MemberList({ project, user }) {
 
     const projectMembers = project.project_roles;
-
-    console.log(projectMembers)
     
     if (!projectMembers) {
         return (
