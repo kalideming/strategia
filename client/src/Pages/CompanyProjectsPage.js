@@ -4,23 +4,7 @@ import CompanyProjectsList from "../Components/CompanyProjectsList";
 function CompanyProjectsPage({ user }) {
 
     const currentUser = user[0];
-    console.log(currentUser)
-    const [ isManager, setIsManager ] = useState(false);
-    const [ isUpperManagement, setIsUpperManagement ] = useState(false);
     let [ companyProjects, setCompanyProjects ] = useState([]);
-    const [ canSeeAllProjs, setCanSeeAllProjs ] = useState
-
-    if (user[0].manager === true) {
-        setIsManager(true)
-    };
-
-    if (user[0].upper_management === true) {
-        setIsUpperManagement(true)
-    };
-
-    if (isManager && isUpperManagement) {
-        setCanSeeAllProjs(true)
-    };
 
     useEffect(() => {
         fetch("/companyprojects")
@@ -29,15 +13,7 @@ function CompanyProjectsPage({ user }) {
     },[]);
 
     return (
-        <div>
-            {canSeeAllProjs ? (
-                <div>
-                    <CompanyProjectsList companyProjects={companyProjects}/>
-                </div>
-            ) : (
-                (null)
-            )}
-        </div>
+        <CompanyProjectsList companyProjects={companyProjects}/>
     );
 };
 

@@ -28,7 +28,8 @@ class ProjectsController < ApplicationController
     end
 
     def company_projects 
-        projects = Project.where(:company_id => logged_on_user.company_id)
+        projects = Project.where(:company_id => current_user.company_id)
+        render json: projects, include: ['company'], status: :ok 
     end
  
     private
