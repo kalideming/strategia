@@ -7,7 +7,7 @@ import AccountPage from "./Pages/AccountPage";
 import MyProjectsPage from "./Pages/MyProjectsPage";
 import ProjectPage from "./Pages/ProjectPage";
 import CompanyProjectsPage from "./Pages/CompanyProjectsPage";
-import NewProjectPage from "./Pages/NewProjectPage";
+// import NewProjectPage from "./Pages/NewProjectPage";
 
 
 
@@ -44,9 +44,9 @@ function App() {
         <Route path="/companyprojects">
           <CompanyProjectsPage user={user} setUser={setUser}/>
         </Route>
-        <Route path="/newproject">
+        {/* <Route path="/newproject">
           <NewProjectPage user={user}/>
-        </Route>
+        </Route> */}
         <Route path="/projects/:id">
           <ProjectPage user={user} setUser={setUser}/>
         </Route>

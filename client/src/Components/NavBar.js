@@ -40,7 +40,7 @@ function NavBar({ user, setUser }) {
                         ) : (
                             <>
                                 <NavLink to="/companyprojects" className="nav-link">Company Projects</NavLink>
-                                <NavLink to="/newproject" className="nav-link">New Project</NavLink> 
+                                {/* <NavLink to="/newproject" className="nav-link">New Project</NavLink>  */}
                             </>
                         )}
                         <NavLink to="/logout" onClick={onLogOut} className="nav-link">LogOut</NavLink>

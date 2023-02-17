@@ -11,10 +11,10 @@ function ProjectInfo({ project, user }) {
 
     return (
         <div className="project-info-container">
-            <h1 className="project-info-title">{title}</h1>
+            <h1 className="welcome-back">{title}</h1>
             <img className="project-info-img" src={picture}/>
-            
             <h3 className="project-info-deadline">Deadline: {deadline}</h3>
+            <h4 className="project-info-description-header">Description:</h4>
             <p className="project-info-description">{description}</p>
         </div>
     );

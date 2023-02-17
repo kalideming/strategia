@@ -78,18 +78,18 @@ function MemberCard({ member, project, user }) {
         <div className="member-card-container">
             <div className="member-card">
                 <img className="member-card-img" src={memberUser.photo} alt=""/>
-                <h2 className="member-card-name">{memberUser.first_name} {memberUser.last_name}</h2>
-                <h1 className="member-card-role">{member.role_title}</h1>
+                <h3 className="member-card-name">{memberUser.first_name} {memberUser.last_name}</h3>
+                <h2 className="member-card-role">{member.role_title}</h2>
                 <p className="member-card-description">{member.description}</p>
                 {(!canEdit) ? (
                     null
                 ) : (
-                    <div>
-                        <button onClick={deleteMember}>Delete Project Member</button>
+                    <div className="container">
+                        <button className="member-button" onClick={deleteMember}>Delete Project Member</button>
                         {(!showMemberUpdate) ? (
-                            <button onClick={switchMemberUpdate}>Update Project Member</button>
+                            <button className="member-button" onClick={switchMemberUpdate}>Update Project Member</button>
                         ) : (
-                            <div>
+                            <div className="member-form">
                                 <h3>Update Member Information</h3>
                                 <form onSubmit={submitUpdate}>
                                     <div>
@@ -119,9 +119,9 @@ function MemberCard({ member, project, user }) {
                                             onChange={handleChange}
                                         />
                                     </div>
-                                    <button type="submit">Submit Update</button>
+                                    <button className="member-button" type="submit">Submit Update</button>
                                 </form>
-                                <button onClick={switchMemberUpdate}>Hide Member Update</button>
+                                <button className="member-button" onClick={switchMemberUpdate}>Hide Member Update</button>
                             </div>
                         )}
                     </div>

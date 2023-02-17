@@ -89,14 +89,13 @@ function ProjectPage({ user }){
         <div className="project-page">
             <ProjectInfo className="project-info" project={project} user={user}/>
             <MemberList className="member-list-container" project={project} user={user}/>
-            <TaskList project={project} user={user}/>
             {(!canEdit) ? (
                 null
             ) : (
-                <div>
-                    <button onClick={deleteProject}>Delete Project</button>
+                <div className="container">
+                    <button className="member-button" onClick={deleteProject}>Delete Project</button>
                     {(!showUpdate) ? (
-                        <button onClick={switchProjectUpdate}>Update Project</button>
+                        <button className="member-button" onClick={switchProjectUpdate}>Update Project</button>
                     ) : (
                         <div>
                             <h3>Update Project:</h3>
@@ -128,13 +127,14 @@ function ProjectPage({ user }){
                                     onChange={handleChange}
                                 />
                             </div>
-                            <button type="submit">Submit Project</button>
+                            <button className="member-button" type="submit">Submit Project</button>
                         </form>
-                        <button onClick={switchProjectUpdate}>Hide Project Update</button>
+                        <button className="member-button" onClick={switchProjectUpdate}>Hide Project Update</button>
                         </div>
                     )}
                 </div>
             )}
+            <TaskList project={project} user={user}/>
         </div>
     );
 };

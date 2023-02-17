@@ -16,7 +16,7 @@ function TaskList({ project, user}) {
     })
 
     return (
-        <div>{mappedProjectTasks}</div>
+        <div className="task-cards">{mappedProjectTasks}</div>
     );
 };
 

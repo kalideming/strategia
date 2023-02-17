@@ -293,6 +293,15 @@ body {
   flex-direction: column;
   float: right;
   margin: 20px;
+  background:rgba(239, 232, 232, 0.816);
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border-radius: 30px;
+}
+
+.project-info-img {
+  max-width: 500px;
+  height: auto;
+  align-self: center;
 }
 
 
@@ -302,12 +311,20 @@ body {
   max-width: 20%;
 }
 
+.member-card-container {
+  background:rgba(239, 232, 232, 0.816);
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border-radius: 30px;
+  margin: 10px;
+}
+
 .member-cards {
   display: flex;
   flex-direction: column;
   margin: 20px;
   max-width: 30%;
-
+  padding: 10px;
+  margin: 10;
 }
 
 .member-cards-item {
@@ -318,12 +335,13 @@ body {
 }
 
 .member-card {
-  background-color: white;
   border-radius: 0.25rem;
   box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
   display: flex;
   flex-direction: column;
   margin: 10px;
+  align-items: center;
+  padding:0%;
 }
 
 .member-card-info:hover {
@@ -333,10 +351,62 @@ body {
 }
 
 .member-card-img {
-  height: auto;
-  max-width: 50%;
-  vertical-align: middle;
+  display: inline;
+  width: 150px;
+  height: 150px;
+  box-sizing: border-box;
+  border: 5px rgba(30, 27, 24, 0) solid;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
 }
-.member-info {
-  align-items: center;
+.member--card-name {
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.member-card-role {
+  text-align: center;
+  padding: 0px;
+}
+
+.project-info-deadline {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+}
+
+.project-info-description {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  margin: 2px;
+  padding: 10px;
+}
+
+.project-info-description-header {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 25px;
+  padding: 0;
+  margin: 0;
+}
+
+.member-button {
+  padding: 4px;
+  margin: 3px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  background:#d7c8c8;
+  border-color: #0e0d0d8a;
+  border-radius: 20%;
+}
+
+.task-cards {
+  display:block;
+  float: right;
+  list-style: none;
+  justify-content: center;
+  max-width: 60%;
 }

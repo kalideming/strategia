@@ -65,17 +65,18 @@ function TaskCard({ task, project, user }) {
     };
 
     return (
-    <div className="task-card">
-        <h2 className="task-title">{task.title}</h2>
-        <h1 className="task-deadline">{task.deadline}</h1>
-        <p className="task-description">{task.description}</p>
+    <div className="my-role-card-item">
+        <div className="my-role-card">
+        <h2 className="my-role-card-title">{task.title}</h2>
+        <h1 className="my-role-card-subtitle">{task.deadline}</h1>
+        <p className="my-role-card-description">{task.description}</p>
         {(!canEdit) ? (
             null
         ) : (
             <div>
-                <button onClick={deleteTask}>Remove Task</button>
+                <button className="member-button" onClick={deleteTask}>Remove Task</button>
                 {(!showUpdate) ? (
-                    <button onClick={switchTaskUpdate}>Update Task</button>
+                    <button className="member-button" onClick={switchTaskUpdate}>Update Task</button>
                 ) : (
                     <div>
                         <h3>Update Task:</h3>
@@ -98,14 +99,14 @@ function TaskCard({ task, project, user }) {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <button type="submit">Submit Update</button>
+                            <button className="member-button" type="submit">Submit Update</button>
                         </form>
-                        <button onClick={switchTaskUpdate}>Hide Task Update</button>
+                        <button className="member-button" onClick={switchTaskUpdate}>Hide Task Update</button>
                     </div>
                 )}
             </div>
         )}
-    </div>
+    </div></div>
     );
 };
 
