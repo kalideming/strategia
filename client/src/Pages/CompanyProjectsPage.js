@@ -13,7 +13,7 @@ function CompanyProjectsPage({ user }) {
     },[]);
 
     return (
-        <CompanyProjectsList companyProjects={companyProjects}/>
+        <CompanyProjectsList companyProjects={companyProjects} currentUser={currentUser}/>
     );
 };
 

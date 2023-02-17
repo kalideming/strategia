@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 
-function NewProjectPage() {
+function NewProjectPage({ user }) {
 
+    const newForm = {
+        title: "",
+        description: "",
+        
+    }
     
 };
 
