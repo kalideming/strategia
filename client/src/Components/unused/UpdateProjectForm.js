@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { ProjectContext } from "../Context/ProjectProvider";
+import { ProjectContext } from "../../Context/ProjectProvider";
 import { useParams } from "react-router-dom";
 
 function UpdateProjectForm({ onClose, project }) {

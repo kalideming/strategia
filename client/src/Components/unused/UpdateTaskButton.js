@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import UpdateTaskForm from "./UpdateTaskForm";
-import { ManagerContext } from "../Context/ManagerProvider";
-import { UpperManagContext } from "../Context/UpperManagProvider";
-import { ProjectHeadContext } from "../Context/ProjectHeadProvider";
+import { ManagerContext } from "../../Context/ManagerProvider";
+import { UpperManagContext } from "../../Context/UpperManagProvider";
+import { ProjectHeadContext } from "../../Context/ProjectHeadProvider";
 
 function UpdateTaskButton({ task, setAllTasks }) {
 

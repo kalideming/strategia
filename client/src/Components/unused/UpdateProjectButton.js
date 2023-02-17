@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import { ManagerContext } from "../Context/ManagerProvider";
-import { UpperManagContext } from "../Context/UpperManagProvider";
-import { ProjectHeadContext } from "../Context/ProjectHeadProvider";
+import { ManagerContext } from "../../Context/ManagerProvider";
+import { UpperManagContext } from "../../Context/UpperManagProvider";
+import { ProjectHeadContext } from "../../Context/ProjectHeadProvider";
 import UpdateProjectForm from "./UpdateProjectForm";
 
 function UpdateProjectButton({ project }) {

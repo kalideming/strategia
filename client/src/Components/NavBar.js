@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 // import CompanyProjsLink from "./CompanyProjsLink";
 // import NewProjectLink from "./NewProjectLink";
 
 function NavBar({ user, setUser }) {
 
+    const currentUser = user[0];
     let history = useHistory();
+    const [ isManager, setIsManager ] = useState(currentUser.manager === true || currentUser.upper_management === true ?
+        (true) : (false));
 
     function onLogOut() {
         fetch("/logout", {
@@ -32,9 +35,15 @@ function NavBar({ user, setUser }) {
                         <NavLink to="/home" className="nav-link">Home</NavLink>
                         <NavLink to="/myaccount" className="nav-link">My Account</NavLink>
                         <NavLink to="/myprojects" className="nav-link">My Projects</NavLink>
-                        {/* <CompanyProjsLink user={user}/>
-                        <NewProjectLink user={user}/> */}
-                        <NavLink to="/logout" onClick={onLogOut} className="nav-link">Log Out</NavLink>
+                        {(!isManager) ? (
+                            null
+                        ) : (
+                            <>
+                                <NavLink to="/companyprojects" className="nav-link">Company Projects</NavLink>
+                                <NavLink to="/newproject" className="nav-link">New Project</NavLink> 
+                            </>
+                        )}
+                        <NavLink to="/logout" onClick={onLogOut} className="nav-link">LogOut</NavLink>
                     </nav>
                 </span>
             )}
